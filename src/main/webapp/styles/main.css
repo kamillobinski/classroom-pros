@@ -1,0 +1,245 @@
+/*
+purple - #6c63ff
+grey - #3f3d56;
+black
+*/
+
+.main-layout {
+    overflow: hidden;
+}
+
+.navbar {
+    width: 100vw;
+    height: 80px;
+    border-bottom: 1px solid #3d315b;
+}
+
+.logo {
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 50px;
+    margin-top: 15px;
+    padding-left: 15px;
+}
+
+.stretch {
+    width: 20%;
+    height: 55px;
+    float: left;
+}
+
+.authorization {
+    width: 160px;
+    height: 55px;
+    float: left;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: "Muli", sans-serif;
+}
+
+.authorization a {
+    text-decoration: none;
+    color: #3f3d56;
+    font-weight: 400;
+}
+
+.authorization a:hover {
+    color: #6c63ff;
+}
+
+.authorization-login {
+    margin-left: 2px;
+}
+
+.authorization-separator {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.authorization-register {
+    margin-left: 0;
+}
+
+.menu {
+    width: 80%;
+    height: 55px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Muli", sans-serif;
+    margin-top: 25px;
+}
+
+.menu-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: "Muli", sans-serif;
+    margin-left: auto;
+}
+
+.menu a:first-child {
+    margin-left: 15px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #3f3d56;
+}
+
+.menu a:hover {
+    color: #6c63ff;
+}
+
+.menu-item-separator {
+    width: 12px;
+    height: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    width: 2px;
+    height: 2px;
+    border: 1px solid #3f3d56;
+    border-radius: 50%;
+}
+
+.toolbar {
+    width: calc(20% - 1px);
+    min-height: 762px;
+    height: calc(100vh - 111px);
+    float: left;
+    display: flex;
+    align-items: top;
+    justify-content: left;
+    text-align: left;
+    font-family: "Muli", sans-serif;
+    font-weight: 400;
+    color: #3f3d56;
+    background-color: #eeeeee;
+    border-right: 1px solid #3f3d5688;
+}
+
+.toolbar-inner {
+    margin-top: 17px;
+    margin-left: 17px;
+}
+
+.toolbar-inner-list {
+    margin-top: 0;
+}
+
+.toolbar-inner-list span:hover {
+    color: #6c63ff;
+    cursor: pointer;
+}
+
+.toolbar-inner-editor-title {
+    font-weight: 300;
+    color: #8b8a95;
+    margin-bottom: 4px;
+    font-size: 11px;
+}
+
+.workspace-inner {
+    width: 80%;
+    height: calc(100vh - 111px);
+    min-height: 762px;
+    float: left;
+    background-color: #f5f5f5;
+}
+
+.toolbar-extra {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    border-bottom: 1px solid #3f3d5688;
+}
+
+.toolbar-extra-project {
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
+.project-title-input {
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 24px;
+    border: none;
+    font-family: "Muli", sans-serif;
+}
+
+.project-description {
+    font-weight: 300;
+    color: #3f3d56;
+    font-family: "Muli", sans-serif;
+    width: 100%;
+}
+
+.workspace {
+    height: 100%;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: left;
+    text-align: center;
+}
+
+.workspace-inner table {
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family: "Muli", sans-serif;
+    border: 1px solid #3f3d5688;
+}
+
+.workspace-inner th {
+    height: 30px;
+    width: 200px;
+    font-weight: 700;
+    border: 1px solid black;
+}
+
+.workspace-inner td {
+    height: 70px;
+    border: 1px solid #3f3d5688;
+}
+
+.table-lesson {
+    font-weight: 600;
+    font-size: 16px;
+    float: left;
+}
+
+.table-teacher {
+    font-size: 13px;
+}
+
+.table-classroom {
+    font-size: 13px;
+}
+
+.additional {
+    width: 100%;
+    height: 30px;
+    float: left;
+    background-color: #3d315b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
