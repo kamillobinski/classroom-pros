@@ -1,6 +1,6 @@
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://localhost:5432/demodb
-    username: postgres
-    password: password
+    jdbc-url: jdbc:mysql://eu-cdbr-west-03.cleardb.net:3306/heroku_62e9fedd716cac1
+    username: b92419f7b42828
+    password: f36769ba
     pool-size: 30
