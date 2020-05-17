@@ -71,7 +71,7 @@
   width: 100%;
   height: 50px;
   color: white;
-  margin-top: 60px;
+  margin-top: 30px;
   border: 1px solid #6c63ff;
   border-radius: 7px;
   background-color: #6c63ff;
@@ -90,6 +90,14 @@
   background-color: transparent;
   font-size: 15px;
   font-weight: 400;
+  font-family: "Muli", sans-serif;
+}
+
+.warning-message {
+  margin-top: 15px;
+  color: #c43b54;
+  font-size: 13px;
+  font-weight: 900;
   font-family: "Muli", sans-serif;
 }
 

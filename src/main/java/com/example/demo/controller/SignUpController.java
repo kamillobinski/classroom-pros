@@ -4,9 +4,11 @@ import com.example.demo.entity.User;
 import com.example.demo.service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.regex.Pattern;
 
@@ -19,7 +21,7 @@ public class SignUpController {
     private SignUpService signUpService;
 
     @RequestMapping(value = "/sign-up-action", method = RequestMethod.POST)
-    public String singUpToAccount(@RequestParam("sign-up-email-input") String email, @RequestParam("sign-up-password-input") String password) {
+    public String singUpToAccount(Model model, @RequestParam("sign-up-email-input") String email, @RequestParam("sign-up-password-input") String password) {
 
         // Validate email address
         boolean isEmailValid = EMAIL_PATTERN.matcher(email).matches() ? true : false;
@@ -41,10 +43,18 @@ public class SignUpController {
                 return "sign-in";
             } else {
                 // If exists go to sign-in and don not create new
-                return "sign-up";
+                model.addAttribute("message", "User already exists.");
+                return "sign-in";
             }
 
         } else {
+            if(password == "" && email == "") {
+                model.addAttribute("message", "Could not create account without data.");
+            } else if(!isEmailValid) {
+                model.addAttribute("message", "Entered email address is not valid.");
+            } else if(password == "") {
+                model.addAttribute("message", "Could not create account without password.");
+            }
             return "sign-up";
         }
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Sign up</title>
     <link rel="stylesheet" href="./css/register.css"/>
@@ -20,6 +20,7 @@
                 <div class="form-container-line"></div>
                 <input type="password" placeholder="Password" class="form-container-password" name="sign-up-password-input">
                 <div class="form-container-line"></div>
+                <p class="warning-message" th:text="${message}"></p>
                 <div class="form-container-buttons">
                     <button class="form-container-login-button" type="submit">Sign up</button>
                     <a href="/sign-in">
