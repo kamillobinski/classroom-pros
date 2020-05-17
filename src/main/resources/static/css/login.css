@@ -117,6 +117,14 @@
     font-family: "Muli", sans-serif;
 }
 
+.warning-message {
+    margin-top: 15px;
+    color: #c43b54;
+    font-size: 13px;
+    font-weight: 900;
+    font-family: "Muli", sans-serif;
+}
+
 /* Second container */
 .second-container {
     width: 100%;

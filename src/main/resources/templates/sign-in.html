@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Log in page</title>
     <link rel="stylesheet" href="./css/login.css"/>
@@ -23,6 +23,7 @@
                     <input type="password" placeholder="Password" class="form-container-password"
                            name="sign-in-password-input">
                     <div class="form-container-line"></div>
+                    <p class="warning-message" th:text="${message}"></p>
                     <div class="form-container-buttons">
                         <button class="form-container-login-button" type="submit">Log in</button>
                         <a href="/sign-up">
