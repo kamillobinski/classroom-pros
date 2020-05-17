@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Log in page</title>
-    <link rel="stylesheet" href="./css/login.css" />
-    <link rel="shortcut icon" href="./utils/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/login.css"/>
+    <link rel="shortcut icon" href="./utils/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Muli font -->
     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
-  <body style="margin: 0px !important;">
-    <div class="grid-container">
-      <!-- Login form container -->
-      <div class="grid-item form">
-          <div class="form-container">
-              <div class="form-container-inner">
-            <div class="form-container-title">Log in to your account</div>
-            <input type="text" placeholder="E-mail address" class="form-container-email">
-            <div class="form-container-line"></div>
-            <input type="password" placeholder="Password" class="form-container-password">
-            <div class="form-container-line"></div>
-            <div class="form-container-buttons">
-                <button class="form-container-login-button">Log in</button>
-                <a href="/sign-up"><button class="form-container-signup-button">Sign up</button></a>
-            </div>
-            </div>
-          </div>
-        </div>
-        <!-- SVG container -->
-        <div class="grid-item decoration">
-            <div class="second-container">
-                <div class="second-container-inner">
-                  <div class="second-container-image"></div>
-                </div>
+<body style="margin: 0px !important;">
+<div class="grid-container">
+    <!-- Login form container -->
+    <div class="grid-item form">
+        <div class="form-container">
+            <div class="form-container-inner">
+                <div class="form-container-title">Log in to your account</div>
+                <!-- Sign-in form -->
+                <form name="sign-in-action" action="sign-in-action" method="POST">
+                    <input type="text" placeholder="E-mail address" class="form-container-email"
+                           name="sign-in-email-input">
+                    <div class="form-container-line"></div>
+                    <input type="password" placeholder="Password" class="form-container-password"
+                           name="sign-in-password-input">
+                    <div class="form-container-line"></div>
+                    <div class="form-container-buttons">
+                        <button class="form-container-login-button" type="submit">Log in</button>
+                        <a href="/sign-up">
+                            <button class="form-container-signup-button">Sign up</button>
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>      
     </div>
-  </body>
+    <!-- SVG container -->
+    <div class="grid-item decoration">
+        <div class="second-container">
+            <div class="second-container-inner">
+                <div class="second-container-image"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
 </html>
