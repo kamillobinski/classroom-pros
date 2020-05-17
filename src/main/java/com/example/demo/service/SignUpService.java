@@ -15,5 +15,6 @@ public class SignUpService {
     public User signUpUser(User user){
         return userRepository.save(user);
     }
+    public User checkIfUserExists(String email) { return userRepository.findByEmail(email); }
 }
 

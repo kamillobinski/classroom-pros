@@ -19,15 +19,23 @@ public class SignUpController {
 
         // Check if input values are not empty
         if (email != "" && password != "") {
+
             // Creates new user based on the entered data in the form
             User newUser = new User();
             newUser.setEmail(email);
             newUser.setPassword(password);
 
-            // Send new user to the database
-            signUpService.signUpUser(newUser);
-
-            return "sign-in";
+            // Check if user already exists in database
+            User signedUser = signUpService.checkIfUserExists(email);
+            if (signedUser == null) {
+                // When user does not exist - save account and return sign-up page
+                // Send new user to the database
+                signUpService.signUpUser(newUser);
+                return "sign-in";
+            } else {
+                // If exists go to sign-in and don not create new
+                return "sign-up";
+            }
 
         } else {
             return "sign-up";
