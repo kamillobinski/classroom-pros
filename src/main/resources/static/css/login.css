@@ -141,7 +141,7 @@
 
 .second-container-image {
     background-size: contain;
-    background-image: url("../utils/images/professor.svg");
+    background-image: url("../utils/professor.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
