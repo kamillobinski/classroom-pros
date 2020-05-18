@@ -11,19 +11,26 @@ public class User {
     private int id;
     private String email;
     private String password;
+    private boolean admin;
+    private String name;
+    private String avatar;
 
     /*
     With Lombok constructors, getters and setters are obsolete
     can be removed later after injecting Lombok annotations
     (which wasn't done yet for clarity)
      */
+
     public User() {
     }
 
-    public User(int id, String email, String password) {
+    public User(int id, String email, String password, boolean admin, String name, String avatar) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.admin = admin;
+        this.name = name;
+        this.avatar = avatar;
     }
 
     public int getId() {
@@ -48,5 +55,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
