@@ -7,12 +7,13 @@ import javax.persistence.*;
 public class Subject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String subjectName;
 
-    @OneToOne(mappedBy = "SUBJECT_TABLE")
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "subject")
     private Classes classes;
 
     public Subject() {
