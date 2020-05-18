@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class Classes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //id will be generated automatically
+    @GeneratedValue(strategy = GenerationType.AUTO) //id will be generated automatically
+    @Column(name = "classesId")
     private int classesId;
     private int subjectId;
     private int groupId;
@@ -15,8 +16,10 @@ public class Classes {
     private int hoursId;
     private String date;
 
-    public Classes() {
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "classesId", referencedColumnName = "id")
+    private Subject subject;
+
 
     public Classes(int classesId, int subjectId, int groupId, int roomId, int hoursId, String date) {
         this.classesId = classesId;
