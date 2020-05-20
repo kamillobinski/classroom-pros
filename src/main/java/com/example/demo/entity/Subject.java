@@ -1,10 +1,13 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "SUBJECT")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "lessons"})
 public class Subject {
 
     @Id
