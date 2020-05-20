@@ -27,9 +27,6 @@ public class LessonService {
     private HourRepository hourRepository;
 
     @Autowired
-    private GroupRepository groupRepository;
-
-    @Autowired
     private Subject subject;
 
     @Autowired
@@ -40,9 +37,6 @@ public class LessonService {
 
     @Autowired
     private Hour hour;
-
-    @Autowired
-    private Group group;
 
     public Lesson saveLesson (Lesson lesson)
     {
@@ -65,12 +59,11 @@ public class LessonService {
         lessonRepository.deleteById(id);
         return "Lesson was successfully removed!";
     }
-
-
     /*
    Requires further work.
    Objects might not be saved in cascade after initial Lesson save.
    If that the case each objectRepository need to be saved individually
+
      */
     @Transactional
     public Lesson updateLesson(Lesson lesson){
@@ -97,12 +90,16 @@ public class LessonService {
         existingHour.setEnd(hour.getEnd());
         hourRepository.save(existingHour);
 
+        /*
         Group existingGroup = groupRepository.getOne(id);
         existingGroup.setGroupName(group.getGroupName());
         existingGroup.setGroupQuantity(group.getGroupQuantity());
         groupRepository.save(existingGroup);
 
+         */
+
         return lessonRepository.save(existingLesson);
 
     }
+
 }
