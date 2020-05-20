@@ -1,10 +1,12 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Component
 @Entity
 @Table(name = "TEACHER")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "lessons"})
