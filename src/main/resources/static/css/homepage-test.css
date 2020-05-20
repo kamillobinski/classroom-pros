@@ -1,0 +1,61 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100vw;
+}
+
+.box table {
+    width: auto;
+    height: auto;
+}
+
+table,
+td,
+th {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 4px;
+}
+
+td {
+    text-align: center;
+}
+
+.toolbox {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.toolbox td:hover,
+.user td:hover {
+    background-color: #e6d3d3;
+    cursor: pointer;
+}
+
+.plan-info {
+    margin-top: 15px;
+    margin-left: 10px;
+    float: left;
+}
+
+.plan {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+}
+
+.plan tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

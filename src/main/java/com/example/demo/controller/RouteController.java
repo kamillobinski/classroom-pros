@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RouteController {
 
-    // Sign in page - default
+    // Sign in page
     @RequestMapping("/sign-in")
     public String getSignIn() {
         return "sign-in.html";
@@ -22,5 +22,11 @@ public class RouteController {
     @RequestMapping("/homepage")
     public String getHomepage() {
         return "homepage.html";
+    }
+
+    // Homepage - TEST VERSION
+    @RequestMapping("/test-home")
+    public String getTestHomepage() {
+        return "homepage-test.html";
     }
 }
