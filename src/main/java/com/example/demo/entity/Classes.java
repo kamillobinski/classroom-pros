@@ -11,7 +11,6 @@ public class Classes {
     private int id;
     private int subject_id;
     private int group_id;
-    private int room_id;
     private int hours_id;
     private String date;
 
@@ -25,17 +24,20 @@ public class Classes {
     private Teacher teacher;
 
     @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
+
+    @ManyToOne
     @JoinColumn(name = "hour_id")
     private Hour hour;
 
     public Classes() {
     }
 
-    public Classes(int id, int subject_id, int group_id, int room_id, int hoursId, String date) {
+    public Classes(int id, int subject_id, int group_id, int hoursId, String date) {
         this.id = id;
         this.subject_id = subject_id;
         this.group_id = group_id;
-        this.room_id = room_id;
         this.hours_id = hoursId;
         this.date = date;
     }
@@ -62,14 +64,6 @@ public class Classes {
 
     public void setGroup_id(int groupId) {
         this.group_id = groupId;
-    }
-
-    public int getRoom_id() {
-        return room_id;
-    }
-
-    public void setRoom_id(int roomId) {
-        this.room_id = roomId;
     }
 
     public int getHours_id() {
