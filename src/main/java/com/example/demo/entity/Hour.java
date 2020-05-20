@@ -14,8 +14,8 @@ public class Hour {
     private String start;
     private String end;
 
-    @OneToMany(targetEntity = Classes.class, mappedBy = "hour")
-    private List<Classes> classes;
+    @OneToMany(targetEntity = Lesson.class, mappedBy = "hour")
+    private List<Lesson> lessons;
 
     public int getHour_id() {
         return hour_id;
@@ -41,11 +41,11 @@ public class Hour {
         this.end = end;
     }
 
-    public List<Classes> getClasses() {
-        return classes;
+    public List<Lesson> getLessons() {
+        return lessons;
     }
 
-    public void setClasses(List<Classes> classes) {
-        this.classes = classes;
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }

@@ -1,9 +1,10 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "SUBJECT_TABLE")
+@Table(name = "SUBJECT")
 public class Subject {
 
     @Id
@@ -11,10 +12,8 @@ public class Subject {
     private int id;
     private String subjectName;
 
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "subject")
-    private Classes classes;
+    @OneToMany(targetEntity = Lesson.class, mappedBy = "subject")
+    private List<Lesson> lessons;
 
     public Subject() {
     }
@@ -28,8 +27,8 @@ public class Subject {
         return id;
     }
 
-    public void setId(int subjectId) {
-        this.id = subjectId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSubjectName() {
@@ -38,5 +37,13 @@ public class Subject {
 
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
+    }
+
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }

@@ -12,8 +12,8 @@ public class Room {
     private int room_id;
     private String number;
 
-    @OneToMany(targetEntity = Classes.class, mappedBy = "room")
-    private List<Classes> classes;
+    @OneToMany(targetEntity = Lesson.class, mappedBy = "room")
+    private List<Lesson> lessons;
 
     public int getRoom_id() {
         return room_id;
@@ -31,11 +31,11 @@ public class Room {
         this.number = number;
     }
 
-    public List<Classes> getClasses() {
-        return classes;
+    public List<Lesson> getLessons() {
+        return lessons;
     }
 
-    public void setClasses(List<Classes> classes) {
-        this.classes = classes;
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }

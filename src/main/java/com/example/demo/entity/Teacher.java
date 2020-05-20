@@ -15,8 +15,8 @@ public class Teacher {
     private String first_name;
     private String last_name;
 
-    @OneToMany(targetEntity = Classes.class, mappedBy = "teacher")
-    private List<Classes> classes;
+    @OneToMany(targetEntity = Lesson.class, mappedBy = "teacher")
+    private List<Lesson> lessons;
 
     public int getTeacher_id() {
         return teacher_id;
@@ -50,11 +50,11 @@ public class Teacher {
         this.last_name = last_name;
     }
 
-    public List<Classes> getClasses() {
-        return classes;
+    public List<Lesson> getLessons() {
+        return lessons;
     }
 
-    public void setClasses(List<Classes> classes) {
-        this.classes = classes;
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }
