@@ -20,6 +20,10 @@ public class Classes {
     updatable = false)
     private Subject subject;
 
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
     public Classes() {
     }
 
