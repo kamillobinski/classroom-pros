@@ -27,6 +27,7 @@ public class Lesson {
     @JoinColumn(name = "hour_id")
     private Hour hour;
 
+
     public Lesson() {
     }
 
