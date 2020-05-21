@@ -31,6 +31,9 @@ public class Lesson {
     @JoinColumn(name = "groups_id")
     private Group group;
 
+    @ManyToOne
+    @JoinColumn(name = "day_id")
+    private Day day;
 
     public Lesson() {
     }
@@ -81,5 +84,13 @@ public class Lesson {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public Day getDay() {
+        return day;
+    }
+
+    public void setDay(Day day) {
+        this.day = day;
     }
 }
