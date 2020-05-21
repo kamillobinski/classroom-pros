@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-public class LessonTestController {
+public class LessonController {
 
     @Autowired
     private LessonService lessonService;
@@ -30,7 +30,6 @@ public class LessonTestController {
     @RequestMapping(value = "/load-plan-hours", method = RequestMethod.GET)
     public String loadData(Model model) {
         List<Hour> allHours = hourService.getHours();
-        System.out.println(allHours.get(1).getStart());
         model.addAttribute("hourData", allHours);
         return "homepage-test";
     }
