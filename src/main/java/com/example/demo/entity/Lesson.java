@@ -27,6 +27,10 @@ public class Lesson {
     @JoinColumn(name = "hour_id")
     private Hour hour;
 
+    @ManyToOne
+    @JoinColumn(name = "groups_id")
+    private Group group;
+
 
     public Lesson() {
     }
@@ -69,5 +73,13 @@ public class Lesson {
 
     public void setHour(Hour hour) {
         this.hour = hour;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }
