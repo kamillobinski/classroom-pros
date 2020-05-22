@@ -8,6 +8,7 @@ import java.util.List;
 public interface LessonRepository extends JpaRepository <Lesson, Integer> {
 
     List<Lesson> findByDayNameOrderByHourAsc (String day);
+    List<Lesson> findByDayNameAndPlanIdOrderByHourAsc (String day, int id);
 
 
 }

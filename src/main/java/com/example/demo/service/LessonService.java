@@ -106,8 +106,12 @@ public class LessonService {
 
     }
 
-    public List<Lesson> getLessonsFromSpecificDayOfTheWeek(String day){
+    public List<Lesson> getLessonsForSpecificDayOfTheWeek(String day){
         return lessonRepository.findByDayNameOrderByHourAsc(day);
+    }
+
+    public List<Lesson> getLessonsForSpecificDayAndPlan(String day, int id){
+        return lessonRepository.findByDayNameAndPlanIdOrderByHourAsc(day, id);
     }
 
 }
