@@ -15,8 +15,8 @@
             <table class="user">
                 <tr>
                     <th>User actions</th>
-                    <td>Sign in</td>
-                    <td>Sign up</td>
+                    <td><a href="/sign-in">Sign in</a></td>
+                    <td><a href="/sign-up">Sign up</a></td>
                 </tr>
             </table>
             <!-- toolbox -->
@@ -35,7 +35,11 @@
             <table class="all-plans">
                 <tr>
                     <th>All plans</th>
-                    <td th:each="plan : ${allPlans}" th:text="${plan.name}" class="all-plans-name">-</td>
+                    <td th:each="plan : ${allPlans}" class="all-plans-name">
+                        <a th:href="@{'/test-home-' + ${plan.id}}">
+                            <span th:text="${plan.name}" class="all-plans-name"></span>
+                        </a>
+                    </td>
                 </tr>
             </table>
         </div>

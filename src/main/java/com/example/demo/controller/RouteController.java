@@ -9,6 +9,7 @@ import com.example.demo.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -44,27 +45,27 @@ public class RouteController {
     }
 
     // Homepage - TEST VERSION
-    @RequestMapping("/test-home")
-    public String getTestHomepage(Model model) {
-        List<Lesson> mondayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Monday");
+    @RequestMapping("/test-home-{requestedPlanId}")
+    public String getTestHomepage(Model model, @PathVariable int requestedPlanId) {
+        List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", requestedPlanId);
         model.addAttribute("mondayData", mondayLessons);
 
-        List<Lesson> tuesdayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Tuesday");
+        List<Lesson> tuesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Tuesday", requestedPlanId);
         model.addAttribute("tuesdayData", tuesdayLessons);
 
-        List<Lesson> wednesdayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Wednesday");
+        List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", requestedPlanId);
         model.addAttribute("wednesdayData", wednesdayLessons);
 
-        List<Lesson> thursdayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Thursday");
+        List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", requestedPlanId);
         model.addAttribute("thursdayData", thursdayLessons);
 
-        List<Lesson> fridayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Friday");
+        List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", requestedPlanId);
         model.addAttribute("fridayData", fridayLessons);
 
         List<Plan> allPlans = planService.getAllPlans();
         model.addAttribute("allPlans", allPlans);
 
-        Plan currentPlan = planService.getPlanById(1);
+        Plan currentPlan = planService.getPlanById(requestedPlanId);
         model.addAttribute("currentPlan", currentPlan);
 
         List<Hour> allHours = hourService.getHours();
