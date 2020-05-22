@@ -45,6 +45,17 @@ public class RouteController {
     }
 
     // Homepage - TEST VERSION
+    // Without data
+    @RequestMapping("/test-home")
+    public String getEmptyTestHomepage(Model model) {
+        List<Plan> allPlans = planService.getAllPlans();
+        model.addAttribute("allPlans", allPlans);
+
+        return "homepage-test-empty";
+    }
+
+    // Homepage - TEST VERSION
+    // With actual plan
     @RequestMapping("/test-home-{requestedPlanId}")
     public String getTestHomepage(Model model, @PathVariable int requestedPlanId) {
         List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", requestedPlanId);
