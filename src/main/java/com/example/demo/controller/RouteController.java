@@ -61,8 +61,11 @@ public class RouteController {
         List<Lesson> fridayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Friday");
         model.addAttribute("fridayData", fridayLessons);
 
+        List<Plan> allPlans = planService.getAllPlans();
+        model.addAttribute("allPlans", allPlans);
+
         Plan currentPlan = planService.getPlanById(1);
-        model.addAttribute("plan", currentPlan);
+        model.addAttribute("currentPlan", currentPlan);
 
         List<Hour> allHours = hourService.getHours();
         model.addAttribute("hourData", allHours);

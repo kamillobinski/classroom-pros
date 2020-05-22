@@ -31,6 +31,13 @@
                     <td>Import</td>
                 </tr>
             </table>
+            <!-- all plans -->
+            <table class="all-plans">
+                <tr>
+                    <th>All plans</th>
+                    <td th:each="plan : ${allPlans}" th:text="${plan.name}" class="all-plans-name">-</td>
+                </tr>
+            </table>
         </div>
 
         <div class="content">
@@ -40,7 +47,7 @@
                     <th>Plan title</th>
                 </tr>
                 <tr>
-                    <td th:text="${plan.name}">-</td>
+                    <td th:text="${currentPlan.name}">-</td>
                 </tr>
             </table>
 

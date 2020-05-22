@@ -36,10 +36,32 @@ td {
     cursor: pointer;
 }
 
+.all-plans {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 11px;
+}
+
+.all-plans-name {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.all-plans-name:hover {
+    max-width: fit-content;
+}
+
+.all-plans td:hover {
+    background-color: #9490d5;
+    cursor: pointer;
+}
+
 .plan-info {
     margin-top: 15px;
     margin-left: 10px;
-    float: left;
     font-size: 12px;
 }
 
@@ -47,7 +69,6 @@ td {
     margin-top: 15px;
     margin-left: 10px;
     margin-right: 10px;
-    float: left;
 }
 
 .plan tr:nth-child(even) {
