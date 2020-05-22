@@ -11,8 +11,7 @@ public class Lesson {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "subject_id", insertable = false,
-    updatable = false)
+    @JoinColumn(name = "subject_id")
     private Subject subject;
 
     @ManyToOne

@@ -19,4 +19,6 @@ public class PlanService {
     public Plan getPlanById(int id){
         return planRepository.findById(id).orElse(null);
     }
+
+    public Plan savePlan (Plan plan) { return planRepository.save(plan); }
 }

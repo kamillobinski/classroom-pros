@@ -14,26 +14,19 @@ public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "subject_id", unique = true, nullable = false)
+    private int subject_id;
     private String subjectName;
 
     @OneToMany(targetEntity = Lesson.class, mappedBy = "subject")
     private List<Lesson> lessons;
 
-    public Subject() {
+    public int getSubject_id() {
+        return subject_id;
     }
 
-    public Subject(int id, String subjectName) {
-        this.id = id;
-        this.subjectName = subjectName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setSubject_id(int subject_id) {
+        this.subject_id = subject_id;
     }
 
     public String getSubjectName() {
