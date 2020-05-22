@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./css/homepage-test.css" />
     <link rel="shortcut icon" href="utils/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0px !important;">
 <div class="box">
@@ -53,64 +54,60 @@
                     <th>Thursday</th>
                     <th>Friday</th>
                 </tr>
-                <tr th:each="hour : ${hourData}">
-                    <td th:text="${hour.start + ' - ' + hour.end}"></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                <tr th:each="hour, iter : ${hourData}">
+                    <td th:text="${hour.start + ' - ' + hour.end}" class="hour"></td>
+                    <!-- monday lessons -->
+                    <td>
+                        <p th:text="${mondayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
+                        <p class="teacher">
+                            <span th:text="${mondayData[__${iter.index}__].teacher.title}" class="title"></span>
+                            <span th:text="${mondayData[__${iter.index}__].teacher.first_name}" class="name"></span>
+                            <span th:text="${mondayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
+                        </p>
+                        <p th:text="${mondayData[__${iter.index}__].room.number}" class="room"></p>
+                    </td>
+                    <!-- tuesday lessons -->
+                    <td>
+                        <p th:text="${tuesdayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
+                        <p class="teacher">
+                            <span th:text="${tuesdayData[__${iter.index}__].teacher.title}" class="title"></span>
+                            <span th:text="${tuesdayData[__${iter.index}__].teacher.first_name}" class="name"></span>
+                            <span th:text="${tuesdayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
+                        </p>
+                        <p th:text="${tuesdayData[__${iter.index}__].room.number}" class="room"></p>
+                    </td>
+                    <!-- wednesday lessons -->
+                    <td>
+                        <p th:text="${wednesdayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
+                        <p class="teacher">
+                            <span th:text="${wednesdayData[__${iter.index}__].teacher.title}" class="title"></span>
+                            <span th:text="${wednesdayData[__${iter.index}__].teacher.first_name}" class="name"></span>
+                            <span th:text="${wednesdayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
+                        </p>
+                        <p th:text="${wednesdayData[__${iter.index}__].room.number}" class="room"></p>
+                    </td>
+                    <!-- thursday lessons -->
+                    <td>
+                        <p th:text="${thursdayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
+                        <p class="teacher">
+                            <span th:text="${thursdayData[__${iter.index}__].teacher.title}" class="title"></span>
+                            <span th:text="${thursdayData[__${iter.index}__].teacher.first_name}" class="name"></span>
+                            <span th:text="${thursdayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
+                        </p>
+                        <p th:text="${thursdayData[__${iter.index}__].room.number}" class="room"></p>
+                    </td>
+                    <!-- friday lessons -->
+                    <td>
+                        <p th:text="${fridayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
+                        <p class="teacher">
+                            <span th:text="${fridayData[__${iter.index}__].teacher.title}" class="title"></span>
+                            <span th:text="${fridayData[__${iter.index}__].teacher.first_name}" class="name"></span>
+                            <span th:text="${fridayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
+                        </p>
+                        <p th:text="${fridayData[__${iter.index}__].room.number}" class="room"></p>
+                    </td>
                 </tr>
                 </c:forEach>
-                <!--
-                <tr>
-                    <td></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr> -->
             </table>
         </div>
     </div>

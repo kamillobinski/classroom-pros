@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Hour;
+import com.example.demo.entity.Lesson;
 import com.example.demo.service.HourService;
+import com.example.demo.service.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,9 @@ public class RouteController {
 
     @Autowired
     private HourService hourService;
+
+    @Autowired
+    private LessonService lessonService;
 
     // Sign in page
     @RequestMapping("/sign-in")
@@ -36,6 +41,21 @@ public class RouteController {
     // Homepage - TEST VERSION
     @RequestMapping("/test-home")
     public String getTestHomepage(Model model) {
+        List<Lesson> mondayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Monday");
+        model.addAttribute("mondayData", mondayLessons);
+
+        List<Lesson> tuesdayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Tuesday");
+        model.addAttribute("tuesdayData", tuesdayLessons);
+
+        List<Lesson> wednesdayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Wednesday");
+        model.addAttribute("wednesdayData", wednesdayLessons);
+
+        List<Lesson> thursdayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Thursday");
+        model.addAttribute("thursdayData", thursdayLessons);
+
+        List<Lesson> fridayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Friday");
+        model.addAttribute("fridayData", fridayLessons);
+
         List<Hour> allHours = hourService.getHours();
         model.addAttribute("hourData", allHours);
         return "homepage-test";

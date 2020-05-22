@@ -1,8 +1,6 @@
 .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     max-width: 100vw;
+    font-family: "Muli", sans-serif;
 }
 
 .box table {
@@ -29,6 +27,7 @@ td {
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 11px;
 }
 
 .toolbox td:hover,
@@ -41,6 +40,7 @@ td {
     margin-top: 15px;
     margin-left: 10px;
     float: left;
+    font-size: 12px;
 }
 
 .plan {
@@ -58,4 +58,30 @@ td {
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 11px;
+}
+
+.hour {
+    font-size: 10px;
+}
+
+.subject {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.teacher {
+    margin: 0;
+}
+
+.teacher span {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.room {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 300;
 }
