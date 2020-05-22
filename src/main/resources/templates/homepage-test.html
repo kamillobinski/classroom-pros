@@ -49,10 +49,14 @@
             <!-- plan-info -->
             <table class="plan-info">
                 <tr>
-                    <th>Plan title</th>
-                </tr>
-                <tr>
-                    <td th:text="${currentPlan.name}">-</td>
+                    <th>Current plan title</th>
+                    <td>
+                        <form name="change-current-plan-name" action="change-current-plan-name" method="POST">
+                            <input type="hidden" name="current-plan-id" th:value="${currentPlan.id}" />
+                            <input type="text" name="changed-plan-name" th:value="${currentPlan.name}"/>
+                            <button type="submit">Submit change</button>
+                        </form>
+                    </td>
                 </tr>
             </table>
 

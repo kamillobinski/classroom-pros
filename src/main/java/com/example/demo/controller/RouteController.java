@@ -146,8 +146,7 @@ public class RouteController {
                     case 6: { hourId = 51; break; }
                     case 7: { hourId = 61; break; }
                 }
-
-
+                
                 System.out.println("i: " + i);
                 System.out.println("dayId: " + dayId);
                 Lesson newLesson = new Lesson();
