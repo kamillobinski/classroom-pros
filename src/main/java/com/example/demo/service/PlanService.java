@@ -21,4 +21,6 @@ public class PlanService {
     }
 
     public Plan savePlan (Plan plan) { return planRepository.save(plan); }
+
+    public void deletePlanById (int id) { planRepository.deletePlanById(id); }
 }

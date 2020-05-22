@@ -114,4 +114,6 @@ public class LessonService {
         return lessonRepository.findByDayNameAndPlanIdOrderByHourAsc(day, id);
     }
 
+    public void deleteLessonByPlanId(int id) { lessonRepository.deleteLessonByPlanId(id); }
+
 }

@@ -24,6 +24,7 @@
                 <tr>
                     <th>Toolbox</th>
                     <td><a href="/generate-new-plan">Create new plan</a></td>
+                    <td><a th:href="@{'/delete-current-plan-' + ${currentPlan.id}}">Delete current plan</a></td>
                     <td>Add new item</td>
                     <td>Edit item</td>
                     <td>Delete item</td>
