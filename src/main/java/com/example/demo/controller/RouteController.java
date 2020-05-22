@@ -2,8 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Hour;
 import com.example.demo.entity.Lesson;
+import com.example.demo.entity.Plan;
 import com.example.demo.service.HourService;
 import com.example.demo.service.LessonService;
+import com.example.demo.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ public class RouteController {
 
     @Autowired
     private LessonService lessonService;
+
+    @Autowired
+    private PlanService planService;
 
     // Sign in page
     @RequestMapping("/sign-in")
@@ -55,6 +60,9 @@ public class RouteController {
 
         List<Lesson> fridayLessons = lessonService.getLessonsFromSpecificDayOfTheWeek("Friday");
         model.addAttribute("fridayData", fridayLessons);
+
+        Plan currentPlan = planService.getPlanById(1);
+        model.addAttribute("plan", currentPlan);
 
         List<Hour> allHours = hourService.getHours();
         model.addAttribute("hourData", allHours);
