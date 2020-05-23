@@ -2,48 +2,48 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
     <title>Homepage - TEST VERSION</title>
-    <link rel="stylesheet" href="./css/homepage-test.css" />
-    <link rel="shortcut icon" href="utils/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/homepage-test.css"/>
+    <link rel="shortcut icon" href="utils/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0px !important;">
 <div class="box">
-    <div class="back">
-        <div class="header">
-            <!-- user -->
-            <table class="user">
-                <tr>
-                    <th>User actions</th>
-                    <td><a href="/sign-in">Sign in</a></td>
-                    <td><a href="/sign-up">Sign up</a></td>
-                </tr>
-            </table>
-            <!-- toolbox -->
-            <table class="toolbox">
-                <tr>
-                    <th>Toolbox</th>
-                    <td><a href="/generate-new-plan">Create new plan</a></td>
-                    <td>Add new item</td>
-                    <td>Edit item</td>
-                    <td>Delete item</td>
-                    <td>Create new</td>
-                    <td>Export</td>
-                    <td>Import</td>
-                </tr>
-            </table>
-            <!-- all plans -->
-            <table class="all-plans">
-                <tr>
-                    <th>All plans</th>
-                    <td th:each="plan : ${allPlans}" class="all-plans-name">
-                        <a th:href="@{'/test-home-' + ${plan.id}}">
-                            <span th:text="${plan.name}" class="all-plans-name"></span>
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="box-header">
+        <!-- routes -->
+        <table class="user-routes">
+            <tr>
+                <th>User routes</th>
+                <td><a href="/sign-in">Sign in</a></td>
+                <td><a href="/sign-up">Sign up</a></td>
+                <td><a href="/homepage">Homepage</a></td>
+                <td><a href="/test-home">Homepage - test</a></td>
+            </tr>
+        </table>
+        <!-- toolbox -->
+        <table class="toolbox">
+            <tr>
+                <th>Toolbox</th>
+                <td><a href="/generate-new-plan">Create new plan</a></td>
+                <td class="disabled">Delete current plan</td>
+                <td class="disabled">Add new item</td>
+                <td class="disabled">Edit item</td>
+                <td class="disabled">Delete item</td>
+                <td class="disabled">Export</td>
+                <td class="disabled">Import</td>
+            </tr>
+        </table>
+        <!-- available plans -->
+        <table class="available-plans">
+            <tr>
+                <th>Available plans</th>
+                <td th:each="plan : ${allPlans}" class="available-plans-name">
+                    <a th:href="@{'/test-home-' + ${plan.id}}">
+                        <span th:text="${plan.name}" class="available-plans-name"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 </body>

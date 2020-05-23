@@ -1,4 +1,5 @@
 .box {
+    width: 100vw;
     max-width: 100vw;
     font-family: "Muli", sans-serif;
 }
@@ -23,6 +24,22 @@ td {
     text-align: center;
 }
 
+/* routes */
+
+.user-routes {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 11px;
+}
+
+.user-routes td:hover {
+    background-color: #e2f0cb;
+    cursor: pointer;
+}
+
+/* toolbox */
+
 .toolbox {
     margin-top: 10px;
     margin-left: 10px;
@@ -30,79 +47,145 @@ td {
     font-size: 11px;
 }
 
-.toolbox td:hover,
-.user td:hover {
-    background-color: #e6d3d3;
+.toolbox td:hover {
+    background-color: #ffdac1;
     cursor: pointer;
 }
 
-.all-plans {
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* available plans */
+
+.available-plans {
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 11px;
 }
 
-.all-plans-name {
-    max-width: 150px;
+.available-plans-name {
+    max-width: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.all-plans-name:hover {
+.available-plans-name:hover {
     max-width: fit-content;
 }
 
-.all-plans td:hover {
-    background-color: #9490d5;
+.available-plans td:hover {
+    background-color: #c7ceea;
     cursor: pointer;
 }
 
-.plan-info {
-    margin-top: 15px;
-    margin-left: 10px;
-    font-size: 12px;
-}
+/* current plan */
 
-.plan {
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.plan tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.user {
+.current-plan {
     margin-top: 10px;
     margin-left: 10px;
-    margin-right: 10px;
-    font-size: 11px;
+    float: left;
 }
 
-.hour {
+.current-plan th {
     font-size: 10px;
 }
 
-.subject {
+.current-plan tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.current-plan-lesson-hour {
+    font-size: 10px;
+}
+
+.current-plan-lesson-subject {
     margin: 0;
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 400;
 }
 
-.teacher {
+.current-plan-lesson-teacher {
     margin: 0;
 }
 
-.teacher span {
-    font-size: 12px;
+.teacher-title,
+.teacher-firstname,
+.teacher-lastname {
+    font-size: 10px;
     font-weight: 300;
 }
 
-.room {
+.current-plan-lesson-room {
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 300;
+}
+
+/* current plan title editor */
+
+.editor {
+    float: left;
+}
+
+.editor-title {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 10px;
+    min-width: 243px;
+    width: 243px;
+    max-width: 243px;
+}
+
+.editor-title-text {
+    font-size: 12px;
+    width: 98%;
+}
+
+.editor-title-submit {
+    font-size: 12px;
+    width: 100%;
+}
+
+/* lesson editor */
+
+.editor-lesson {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 10px;
+    min-width: 243px;
+    width: 243px;
+    max-width: 243px;
+}
+
+label {
+    display: inline-block;
+    width: 50px;
+    text-align: right;
+}
+
+.editor-lesson-submit {
+    font-size: 12px;
+    width: 100%;
+}
+
+.editor-lesson-subject {
+    font-size: 12px;
+    width: 173px;
+    max-width: 173px;
+}
+
+.editor-lesson-teacher {
+    font-size: 12px;
+    width: 173px;
+    max-width: 173px;
+}
+
+.editor-lesson-room {
+    font-size: 12px;
+    width: 173px;
+    max-width: 173px;
 }

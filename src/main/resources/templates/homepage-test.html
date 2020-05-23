@@ -2,129 +2,178 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
     <title>Homepage - TEST VERSION</title>
-    <link rel="stylesheet" href="./css/homepage-test.css" />
-    <link rel="shortcut icon" href="utils/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/homepage-test.css"/>
+    <link rel="shortcut icon" href="utils/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0px !important;">
 <div class="box">
-    <div class="back">
-        <div class="header">
-            <!-- user -->
-            <table class="user">
-                <tr>
-                    <th>User actions</th>
-                    <td><a href="/sign-in">Sign in</a></td>
-                    <td><a href="/sign-up">Sign up</a></td>
-                </tr>
-            </table>
-            <!-- toolbox -->
-            <table class="toolbox">
-                <tr>
-                    <th>Toolbox</th>
-                    <td><a href="/generate-new-plan">Create new plan</a></td>
-                    <td><a th:href="@{'/delete-current-plan-' + ${currentPlan.id}}">Delete current plan</a></td>
-                    <td>Add new item</td>
-                    <td>Edit item</td>
-                    <td>Delete item</td>
-                    <td>Create new</td>
-                    <td>Export</td>
-                    <td>Import</td>
-                </tr>
-            </table>
-            <!-- all plans -->
-            <table class="all-plans">
-                <tr>
-                    <th>All plans</th>
-                    <td th:each="plan : ${allPlans}" class="all-plans-name">
-                        <a th:href="@{'/test-home-' + ${plan.id}}">
-                            <span th:text="${plan.name}" class="all-plans-name"></span>
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="box-header">
+        <!-- routes -->
+        <table class="user-routes">
+            <tr>
+                <th>User routes</th>
+                <td><a href="/sign-in">Sign in</a></td>
+                <td><a href="/sign-up">Sign up</a></td>
+                <td><a href="/homepage">Homepage</a></td>
+                <td><a href="/test-home">Homepage - test</a></td>
+            </tr>
+        </table>
+        <!-- toolbox -->
+        <table class="toolbox">
+            <tr>
+                <th>Toolbox</th>
+                <td><a href="/generate-new-plan">Create new plan</a></td>
+                <td><a th:href="@{'/delete-current-plan-' + ${currentPlan.id}}">Delete current plan</a></td>
+                <td class="disabled">Add new item</td>
+                <td class="disabled">Edit item</td>
+                <td class="disabled">Delete item</td>
+                <td class="disabled">Export</td>
+                <td class="disabled">Import</td>
+            </tr>
+        </table>
+        <!-- available plans -->
+        <table class="available-plans">
+            <tr>
+                <th>Available plans</th>
+                <td th:each="plan : ${allPlans}" class="available-plans-name">
+                    <a th:href="@{'/test-home-' + ${plan.id}}">
+                        <span th:text="${plan.name}" class="available-plans-name"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="box-main-content">
+        <!-- current plan -->
+        <table class="current-plan">
+            <tr>
+                <th>Hours</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr th:each="hour, iter : ${hourData}">
+                <td th:text="${hour.start + ' - ' + hour.end}" class="current-plan-lesson-hour"></td>
+                <!-- monday lessons -->
+                <td>
+                    <p th:text="${mondayData[__${iter.index}__].subject.subjectName}"
+                       class="current-plan-lesson-subject"></p>
+                    <p class="current-plan-lesson-teacher">
+                        <span th:text="${mondayData[__${iter.index}__].teacher.title}" class="teacher-title"></span>
+                        <span th:text="${mondayData[__${iter.index}__].teacher.first_name}"
+                              class="teacher-firstname"></span>
+                        <span th:text="${mondayData[__${iter.index}__].teacher.last_name}"
+                              class="teacher-lastname"></span>
+                    </p>
+                    <p th:text="${mondayData[__${iter.index}__].room.number}" class="current-plan-lesson-room"></p>
+                </td>
+                <!-- tuesday lessons -->
+                <td>
+                    <p th:text="${tuesdayData[__${iter.index}__].subject.subjectName}" class="current-plan-lesson-subject"></p>
+                    <p class="current-plan-lesson-teacher">
+                        <span th:text="${tuesdayData[__${iter.index}__].teacher.title}" class="teacher-title"></span>
+                        <span th:text="${tuesdayData[__${iter.index}__].teacher.first_name}" class="teacher-firstname"></span>
+                        <span th:text="${tuesdayData[__${iter.index}__].teacher.last_name}"
+                              class="teacher-lastname"></span>
+                    </p>
+                    <p th:text="${tuesdayData[__${iter.index}__].room.number}" class="current-plan-lesson-room"></p>
+                </td>
+                <!-- wednesday lessons -->
+                <td>
+                    <p th:text="${wednesdayData[__${iter.index}__].subject.subjectName}" class="current-plan-lesson-subject"></p>
+                    <p class="current-plan-lesson-teacher">
+                        <span th:text="${wednesdayData[__${iter.index}__].teacher.title}" class="teacher-title"></span>
+                        <span th:text="${wednesdayData[__${iter.index}__].teacher.first_name}" class="teacher-firstname"></span>
+                        <span th:text="${wednesdayData[__${iter.index}__].teacher.last_name}"
+                              class="teacher-lastname"></span>
+                    </p>
+                    <p th:text="${wednesdayData[__${iter.index}__].room.number}" class="current-plan-lesson-room"></p>
+                </td>
+                <!-- thursday lessons -->
+                <td>
+                    <p th:text="${thursdayData[__${iter.index}__].subject.subjectName}" class="current-plan-lesson-subject"></p>
+                    <p class="current-plan-lesson-teacher">
+                        <span th:text="${thursdayData[__${iter.index}__].teacher.title}" class="teacher-title"></span>
+                        <span th:text="${thursdayData[__${iter.index}__].teacher.first_name}" class="teacher-firstname"></span>
+                        <span th:text="${thursdayData[__${iter.index}__].teacher.last_name}"
+                              class="teacher-lastname"></span>
+                    </p>
+                    <p th:text="${thursdayData[__${iter.index}__].room.number}" class="current-plan-lesson-room"></p>
+                </td>
+                <!-- friday lessons -->
+                <td>
+                    <p th:text="${fridayData[__${iter.index}__].subject.subjectName}" class="current-plan-lesson-subject"></p>
+                    <p class="current-plan-lesson-teacher">
+                        <span th:text="${fridayData[__${iter.index}__].teacher.title}" class="teacher-title"></span>
+                        <span th:text="${fridayData[__${iter.index}__].teacher.first_name}" class="teacher-firstname"></span>
+                        <span th:text="${fridayData[__${iter.index}__].teacher.last_name}"
+                              class="teacher-lastname"></span>
+                    </p>
+                    <p th:text="${fridayData[__${iter.index}__].room.number}" class="current-plan-lesson-room"></p>
+                </td>
+            </tr>
+            </c:forEach>
+        </table>
 
-        <div class="content">
-            <!-- plan-info -->
-            <table class="plan-info">
+        <div class="editor">
+            <!-- current plan title editor -->
+            <form name="change-current-plan-name" id="title-editor-form" action="change-current-plan-name" method="POST">
+            <table class="editor-title">
                 <tr>
-                    <th>Current plan title</th>
+                    <th>Title editor</th>
+                </tr>
+                <tr>
                     <td>
-                        <form name="change-current-plan-name" action="change-current-plan-name" method="POST">
-                            <input type="hidden" name="current-plan-id" th:value="${currentPlan.id}" />
-                            <input type="text" name="changed-plan-name" th:value="${currentPlan.name}"/>
-                            <button type="submit">Submit change</button>
-                        </form>
+                        <input type="hidden" name="current-plan-id" form="title-editor-form" th:value="${currentPlan.id}"/>
+                        <input type="text" name="changed-plan-name" form="title-editor-form" th:value="${currentPlan.name}"
+                               class="editor-title-text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" form="title-editor-form" class="editor-title-submit">Submit change</button>
                     </td>
                 </tr>
             </table>
-
-            <!-- actual plan -->
-            <table class="plan">
+            </form>
+            <!-- lesson editor -->
+            <table class="editor-lesson">
                 <tr>
-                    <th>Hours</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
+                    <th>Lesson editor</th>
                 </tr>
-                <tr th:each="hour, iter : ${hourData}">
-                    <td th:text="${hour.start + ' - ' + hour.end}" class="hour"></td>
-                    <!-- monday lessons -->
+                <tr>
                     <td>
-                        <p th:text="${mondayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
-                        <p class="teacher">
-                            <span th:text="${mondayData[__${iter.index}__].teacher.title}" class="title"></span>
-                            <span th:text="${mondayData[__${iter.index}__].teacher.first_name}" class="name"></span>
-                            <span th:text="${mondayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
-                        </p>
-                        <p th:text="${mondayData[__${iter.index}__].room.number}" class="room"></p>
-                    </td>
-                    <!-- tuesday lessons -->
-                    <td>
-                        <p th:text="${tuesdayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
-                        <p class="teacher">
-                            <span th:text="${tuesdayData[__${iter.index}__].teacher.title}" class="title"></span>
-                            <span th:text="${tuesdayData[__${iter.index}__].teacher.first_name}" class="name"></span>
-                            <span th:text="${tuesdayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
-                        </p>
-                        <p th:text="${tuesdayData[__${iter.index}__].room.number}" class="room"></p>
-                    </td>
-                    <!-- wednesday lessons -->
-                    <td>
-                        <p th:text="${wednesdayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
-                        <p class="teacher">
-                            <span th:text="${wednesdayData[__${iter.index}__].teacher.title}" class="title"></span>
-                            <span th:text="${wednesdayData[__${iter.index}__].teacher.first_name}" class="name"></span>
-                            <span th:text="${wednesdayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
-                        </p>
-                        <p th:text="${wednesdayData[__${iter.index}__].room.number}" class="room"></p>
-                    </td>
-                    <!-- thursday lessons -->
-                    <td>
-                        <p th:text="${thursdayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
-                        <p class="teacher">
-                            <span th:text="${thursdayData[__${iter.index}__].teacher.title}" class="title"></span>
-                            <span th:text="${thursdayData[__${iter.index}__].teacher.first_name}" class="name"></span>
-                            <span th:text="${thursdayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
-                        </p>
-                        <p th:text="${thursdayData[__${iter.index}__].room.number}" class="room"></p>
-                    </td>
-                    <!-- friday lessons -->
-                    <td>
-                        <p th:text="${fridayData[__${iter.index}__].subject.subjectName}" class="subject"></p>
-                        <p class="teacher">
-                            <span th:text="${fridayData[__${iter.index}__].teacher.title}" class="title"></span>
-                            <span th:text="${fridayData[__${iter.index}__].teacher.first_name}" class="name"></span>
-                            <span th:text="${fridayData[__${iter.index}__].teacher.last_name}" class="name-2"></span>
-                        </p>
-                        <p th:text="${fridayData[__${iter.index}__].room.number}" class="room"></p>
+                        <label for="editor-lesson-subject">Subject: </label>
+                        <select id="editor-lesson-subject" class="editor-lesson-subject">
+                            <option value="1">Empty...</option>
+                        </select>
                     </td>
                 </tr>
-                </c:forEach>
+                <tr>
+                    <td>
+                        <label for="editor-lesson-teacher">Teacher: </label>
+                        <select id="editor-lesson-teacher" class="editor-lesson-teacher">
+                            <option value="1">Empty...</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="editor-lesson-room">Room: </label>
+                        <select id="editor-lesson-room" class="editor-lesson-room">
+                            <option value="1">Empty...</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" class="editor-lesson-submit">Submit change</button>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
