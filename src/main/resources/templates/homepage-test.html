@@ -234,7 +234,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <button type="submit" class="editor-lesson-submit">Submit change</button>
+                            <button type="submit" class="editor-lesson-submit" th:disabled="${editedLessonId == null}">Submit change</button>
                         </td>
                     </tr>
                 </table>
