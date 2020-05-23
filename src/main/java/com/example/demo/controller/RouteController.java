@@ -103,6 +103,17 @@ public class RouteController {
 
         List<Hour> allHours = hourService.getHours();
         model.addAttribute("hourData", allHours);
+
+        // Used in the lesson edit form
+        List<Subject> allSubjects = subjectRepository.findAll();
+        model.addAttribute("allSubjects", allSubjects);
+
+        List<Teacher> allTeachers = teacherRepository.findAll();
+        model.addAttribute("allTeachers", allTeachers);
+
+        List<Room> allRooms = roomRepository.findAll();
+        model.addAttribute("allRooms", allRooms);
+
         return "homepage-test";
     }
 

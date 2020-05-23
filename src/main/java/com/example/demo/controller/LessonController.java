@@ -1,9 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Hour;
-import com.example.demo.entity.Lesson;
+import com.example.demo.dao.LessonRepository;
+import com.example.demo.dao.RoomRepository;
+import com.example.demo.dao.SubjectRepository;
+import com.example.demo.dao.TeacherRepository;
+import com.example.demo.entity.*;
 import com.example.demo.service.HourService;
 import com.example.demo.service.LessonService;
+import com.example.demo.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +21,25 @@ import java.util.List;
 public class LessonController {
 
     @Autowired
+    private SubjectRepository subjectRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
+
+    @Autowired
+    private RoomRepository roomRepository;
+
+    @Autowired
+    private LessonRepository lessonRepository;
+
+    @Autowired
     private LessonService lessonService;
 
     @Autowired
     private HourService hourService;
+
+    @Autowired
+    private PlanService planService;
 
     @GetMapping("/lessons")
     public List<Lesson> findAllLessons(){
@@ -31,6 +50,46 @@ public class LessonController {
     public String loadData(Model model) {
         List<Hour> allHours = hourService.getHours();
         model.addAttribute("hourData", allHours);
+        return "homepage-test";
+    }
+
+    @RequestMapping("/request-lesson-update-{lessonId}-{planId}")
+    public String updateLesson(Model model, @PathVariable int lessonId, @PathVariable int planId) {
+        Lesson lesson = lessonRepository.findById(lessonId).orElse(null);
+
+        List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", planId);
+        List<Lesson> tuesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Tuesday", planId);
+        List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", planId);
+        List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", planId);
+        List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", planId);
+
+        List<Plan> allPlans = planService.getAllPlans();
+        Plan currentPlan = planService.getPlanById(planId);
+        List<Hour> allHours = hourService.getHours();
+
+        // Used in the lesson edit form
+        List<Subject> allSubjects = subjectRepository.findAll();
+        List<Teacher> allTeachers = teacherRepository.findAll();
+        List<Room> allRooms = roomRepository.findAll();
+
+        model.addAttribute("selectedLessonSubject", lesson.getSubject().getSubject_id());
+        model.addAttribute("selectedLessonTeacher", lesson.getTeacher().getTeacher_id());
+        model.addAttribute("selectedLessonRoom", lesson.getRoom().getRoom_id());
+
+        model.addAttribute("mondayData", mondayLessons);
+        model.addAttribute("tuesdayData", tuesdayLessons);
+        model.addAttribute("wednesdayData", wednesdayLessons);
+        model.addAttribute("thursdayData", thursdayLessons);
+        model.addAttribute("fridayData", fridayLessons);
+
+        model.addAttribute("allPlans", allPlans);
+        model.addAttribute("currentPlan", currentPlan);
+        model.addAttribute("hourData", allHours);
+
+        model.addAttribute("allSubjects", allSubjects);
+        model.addAttribute("allTeachers", allTeachers);
+        model.addAttribute("allRooms", allRooms);
+
         return "homepage-test";
     }
 }
