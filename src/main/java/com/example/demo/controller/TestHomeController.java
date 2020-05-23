@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
@@ -52,13 +51,6 @@ public class TestHomeController {
 
     @Autowired
     private TeacherRepository teacherRepository;
-
-    @RequestMapping(value = "/test-load-plan-hours", method = RequestMethod.GET)
-    public String loadData(Model model) {
-        List<Hour> allHours = hourService.getHours();
-        model.addAttribute("hourData", allHours);
-        return "homepage-test";
-    }
 
     @RequestMapping("/test-request-lesson-update-{lessonId}-{planId}")
     public String requestLessonUpdate(Model model, @PathVariable int lessonId, @PathVariable int planId) {
@@ -174,7 +166,7 @@ public class TestHomeController {
         Plan savedPlan = planService.savePlan(defaultNewPlan);
         int savedPlanId = savedPlan.getId();
 
-        return "redirect:/generate-new-table-" + savedPlanId;
+        return "redirect:/test-generate-new-table-" + savedPlanId;
     }
 
     // Homepage - TEST VERSION
