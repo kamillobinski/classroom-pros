@@ -11,5 +11,4 @@ public interface LessonRepository extends JpaRepository <Lesson, Integer> {
     List<Lesson> findByDayNameAndPlanIdOrderByHourAsc (String day, int id);
     void deleteLessonByPlanId (int id);
 
-
 }
