@@ -42,7 +42,7 @@ public class LessonController {
     private PlanService planService;
 
     @GetMapping("/lessons")
-    public List<Lesson> findAllLessons(){
+    public List<Lesson> findAllLessons() {
         return lessonService.getLessons();
     }
 
@@ -54,7 +54,7 @@ public class LessonController {
     }
 
     @RequestMapping("/request-lesson-update-{lessonId}-{planId}")
-    public String updateLesson(Model model, @PathVariable int lessonId, @PathVariable int planId) {
+    public String requestLessonUpdate(Model model, @PathVariable int lessonId, @PathVariable int planId) {
         Lesson lesson = lessonRepository.findById(lessonId).orElse(null);
 
         List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", planId);
@@ -90,6 +90,26 @@ public class LessonController {
         model.addAttribute("allTeachers", allTeachers);
         model.addAttribute("allRooms", allRooms);
 
+        model.addAttribute("editedLessonId", lessonId);
+        model.addAttribute("editedPlanId", planId);
+
         return "homepage-test";
+    }
+
+    @RequestMapping("/lesson-update")
+    public String updateLesson(Model model, @RequestParam int lessonId, @RequestParam int planId, @RequestParam int subjectId, @RequestParam int teacherId, @RequestParam int roomId) {
+
+        Lesson lesson = lessonRepository.findById(lessonId).orElse(null);
+        Subject subject = subjectRepository.findById(subjectId).orElse(null);
+        Teacher teacher = teacherRepository.findById(teacherId).orElse(null);
+        Room room = roomRepository.findById(roomId).orElse(null);
+
+        lesson.setSubject(subject);
+        lesson.setTeacher(teacher);
+        lesson.setRoom(room);
+
+        lessonRepository.save(lesson);
+
+        return "redirect:/test-home-" + planId;
     }
 }

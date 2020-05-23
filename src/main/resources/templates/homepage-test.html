@@ -192,48 +192,53 @@
                 </table>
             </form>
             <!-- lesson editor -->
-            <table class="editor-lesson">
-                <tr>
-                    <th>Lesson editor</th>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="editor-lesson-subject">Subject: </label>
-                        <select id="editor-lesson-subject" class="editor-lesson-subject">
-                            <option th:each="subject : ${allSubjects}" th:value="${subject.subject_id}"
-                                    th:text="${subject.subjectName}"
-                                    th:selected="(${subject.subject_id} == *{selectedLessonSubject})">
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="editor-lesson-teacher">Teacher: </label>
-                        <select id="editor-lesson-teacher" class="editor-lesson-teacher">
-                            <option th:each="teacher : ${allTeachers}" th:value="${teacher.teacher_id}"
-                                    th:text="${teacher.title != null} ? ${teacher.title + ' ' + teacher.first_name + ' ' + teacher.last_name} : ' '"
-                                    th:selected="(${teacher.teacher_id} == *{selectedLessonTeacher})">
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="editor-lesson-room">Room: </label>
-                        <select id="editor-lesson-room" class="editor-lesson-room">
-                            <option th:each="room : ${allRooms}" th:value="${room.room_id}" th:text="${room.number}"
-                                    th:selected="(${room.room_id} == *{selectedLessonRoom})">
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit" class="editor-lesson-submit">Submit change</button>
-                    </td>
-                </tr>
-            </table>
+            <form name="form-editor-lesson" id="form-editor-lesson" action="lesson-update"
+                  method="POST">
+                <table class="editor-lesson">
+                    <tr>
+                        <th>Lesson editor</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="lessonId" form="form-editor-lesson" th:value="${editedLessonId}"/>
+                            <input type="hidden" name="planId" form="form-editor-lesson" th:value="${editedPlanId}"/>
+                            <label for="editor-lesson-subject">Subject: </label>
+                            <select id="editor-lesson-subject" class="editor-lesson-subject" name="subjectId">
+                                <option th:each="subject : ${allSubjects}" th:value="${subject.subject_id}"
+                                        th:text="${subject.subjectName}"
+                                        th:selected="(${subject.subject_id} == *{selectedLessonSubject})">
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="editor-lesson-teacher">Teacher: </label>
+                            <select id="editor-lesson-teacher" class="editor-lesson-teacher" name="teacherId">
+                                <option th:each="teacher : ${allTeachers}" th:value="${teacher.teacher_id}"
+                                        th:text="${teacher.title != null} ? ${teacher.title + ' ' + teacher.first_name + ' ' + teacher.last_name} : ' '"
+                                        th:selected="(${teacher.teacher_id} == *{selectedLessonTeacher})">
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="editor-lesson-room">Room: </label>
+                            <select id="editor-lesson-room" class="editor-lesson-room" name="roomId">
+                                <option th:each="room : ${allRooms}" th:value="${room.room_id}" th:text="${room.number}"
+                                        th:selected="(${room.room_id} == *{selectedLessonRoom})">
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" class="editor-lesson-submit">Submit change</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
 </div>
