@@ -22,4 +22,10 @@ public class RouteController {
     public String getHomepage() {
         return "homepage";
     }
+
+    // Upload
+    @RequestMapping("/upload")
+    public String getAddItem() {
+        return "upload";
+    }
 }
