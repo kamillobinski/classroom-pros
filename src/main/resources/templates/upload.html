@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add new item</title>
+    <link rel="stylesheet" href="./css/upload.css"/>
+    <link rel="shortcut icon" href="./utils/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="upload-box">
+    <div class="upload-box-header">
+        <table class="upload-user-routes">
+            <tr>
+                <th>User routes</th>
+                <td><a href="/sign-in">Sign in</a></td>
+                <td><a href="/sign-up">Sign up</a></td>
+                <td><a href="/homepage">Homepage</a></td>
+                <td><a href="/test-home">Homepage - test</a></td>
+            </tr>
+        </table>
+        <table class="upload-toolbox">
+            <tr>
+                <td>Add teacher</td>
+                <td>Add Subject</td>
+                <td>Add room</td>
+            </tr>
+        </table>
+    </div>
+    <!-- formularz nauczyciela-->
+    <div class="upload-form-teacher">
+        <form name="add-teacher-action" action="add-teacher-action" method="POST">
+            <input type="text" placeholder="First name" class="form-container-firstname"
+                   name="add-teacher-firstname-input"> <!-- Sprawdzić klase -->
+            <div class="form-container-line"></div>
+            <input type="text" placeholder="Last name" class="form-container-lastname"
+                   name="add-teacher-lastname-input">
+            <div class="form-container-line"></div>
+            <input type="text" placeholder="Title" class="form-container-title"
+                   name="add-teacher-title-input">
+            <div class="form-container-line"></div>
+            <div class="form-container-buttons">
+                <button class="form-container-teacher-button" type="submit">Add new teacher</button>
+            </div>
+        </form>
+    </div>
+    <!-- formularz przedmiotu-->
+    <div class="upload-form-subject">
+        <form name="add-subject-action" action="add-subject-action" method="POST">
+            <input type="text" placeholder="Subject name" class="form-container-subject-name"
+                   name="add-subject-name-input"> <!-- Sprawdzić klase -->
+            <div class="form-container-line"></div>
+            <div class="form-container-buttons">
+                <button class="form-container-subject-button" type="submit">Add new subject</button>
+            </div>
+        </form>
+    </div>
+    <!-- formularz sali-->
+    <div class="upload-form-room">
+        <form name="add-room-action" action="add-room-action" method="POST">
+            <input type="number" placeholder="Room numer" class="form-container-room-number"
+                   name="add-room-number-input">
+            <div class="form-container-line"></div>
+            <div class="form-container-buttons">
+                <button class="form-container-room-button" type="submit">Add new room</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
