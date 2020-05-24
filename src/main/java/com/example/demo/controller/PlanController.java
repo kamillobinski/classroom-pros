@@ -36,17 +36,6 @@ public class PlanController {
     @Autowired
     private RoomRepository roomRepository;
 
-    // Change plan name
-    @RequestMapping("/change-current-plan-name")
-    public String changePlanName(Model model, @RequestParam("current-plan-id") int id, @RequestParam("changed-plan-name") String name) {
-        Plan existingPlan = planService.getPlanById(id);
-        existingPlan.setName(name);
-
-        planService.savePlan(existingPlan);
-
-        return "redirect:/test-home-" + id;
-    }
-
     @RequestMapping("/homepage-{requestedPlanId}")
     public String selectPlan(Model model,@PathVariable int requestedPlanId) {
         List<Plan> plans = planService.getAllPlans();
@@ -97,13 +86,5 @@ public class PlanController {
 
     }
 
-    @Transactional
-    @RequestMapping("/delete-current-plan-{current-plan-id}")
-    public String deleteCurrentPlan(Model model, @PathVariable("current-plan-id") int id) {
-        lessonService.deleteLessonByPlanId(id);
-        planService.deletePlanById(id);
-
-        return "redirect:/test-home";
-    }
 
 }

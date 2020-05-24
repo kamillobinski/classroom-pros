@@ -24,8 +24,8 @@
         <table class="toolbox">
             <tr>
                 <th>Toolbox</th>
-                <td><a href="/generate-new-plan">Create new plan</a></td>
-                <td><a th:href="@{'/delete-current-plan-' + ${currentPlan.id}}">Delete current plan</a></td>
+                <td><a href="/test-generate-new-plan">Create new plan</a></td>
+                <td><a th:href="@{'/test-delete-current-plan-' + ${currentPlan.id}}">Delete current plan</a></td>
                 <td class="disabled">Add new item</td>
                 <td class="disabled">Edit item</td>
                 <td class="disabled">Delete item</td>
@@ -60,7 +60,7 @@
                 <td th:text="${hour.start + ' - ' + hour.end}" class="current-plan-lesson-hour"></td>
                 <!-- monday lessons -->
                 <td>
-                    <a th:href="@{'/request-lesson-update-' + ${mondayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
+                    <a th:href="@{'/test-request-lesson-update-' + ${mondayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
                        class="link">
                         <div class="link-expander">
                             <p th:text="${mondayData[__${iter.index}__].subject.subjectName}"
@@ -81,7 +81,7 @@
                 </td>
                 <!-- tuesday lessons -->
                 <td>
-                    <a th:href="@{'/request-lesson-update-' + ${tuesdayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
+                    <a th:href="@{'/test-request-lesson-update-' + ${tuesdayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
                        class="link">
                         <div class="link-expander">
                             <p th:text="${tuesdayData[__${iter.index}__].subject.subjectName}"
@@ -102,7 +102,7 @@
                 </td>
                 <!-- wednesday lessons -->
                 <td>
-                    <a th:href="@{'/request-lesson-update-' + ${wednesdayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
+                    <a th:href="@{'/test-request-lesson-update-' + ${wednesdayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
                        class="link">
                         <div class="link-expander">
                             <p th:text="${wednesdayData[__${iter.index}__].subject.subjectName}"
@@ -123,7 +123,7 @@
                 </td>
                 <!-- thursday lessons -->
                 <td>
-                    <a th:href="@{'/request-lesson-update-' + ${thursdayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
+                    <a th:href="@{'/test-request-lesson-update-' + ${thursdayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
                        class="link">
                         <div class="link-expander">
                             <p th:text="${thursdayData[__${iter.index}__].subject.subjectName}"
@@ -144,7 +144,7 @@
                 </td>
                 <!-- friday lessons -->
                 <td>
-                    <a th:href="@{'/request-lesson-update-' + ${fridayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
+                    <a th:href="@{'/test-request-lesson-update-' + ${fridayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}"
                        class="link">
                         <div class="link-expander">
                             <p th:text="${fridayData[__${iter.index}__].subject.subjectName}"
@@ -168,7 +168,7 @@
 
         <div class="editor">
             <!-- current plan title editor -->
-            <form name="change-current-plan-name" id="title-editor-form" action="change-current-plan-name"
+            <form name="change-current-plan-name" id="title-editor-form" action="test-change-current-plan-name"
                   method="POST">
                 <table class="editor-title">
                     <tr>
@@ -192,7 +192,7 @@
                 </table>
             </form>
             <!-- lesson editor -->
-            <form name="form-editor-lesson" id="form-editor-lesson" action="lesson-update"
+            <form name="form-editor-lesson" id="form-editor-lesson" action="test-lesson-update"
                   method="POST">
                 <table class="editor-lesson">
                     <tr>
@@ -234,7 +234,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <button type="submit" class="editor-lesson-submit">Submit change</button>
+                            <button type="submit" class="editor-lesson-submit" th:disabled="${editedLessonId == null}">Submit change</button>
                         </td>
                     </tr>
                 </table>
