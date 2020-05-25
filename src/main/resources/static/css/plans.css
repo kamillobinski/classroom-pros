@@ -78,6 +78,10 @@ body {
     cursor: pointer;
 }
 
+#active {
+    color: #6c63ff;
+}
+
 /* user actions */
 .header__user {
     width: 100%;
@@ -129,75 +133,55 @@ body {
 
 /* plan */
 
-.workspace__plan {
+.workspace__plans {
     height: 100vh;
     overflow-y: scroll;
     padding-top: 0;
     margin-top: 0;
 }
 
-.workspace__plan__inner {
+.workspace__plans__inner {
     padding: 40px;
 }
 
-.plan__title--heading {
+.plans__title--heading {
     font-size: 20px;
     font-weight: 500;
     font-family: "Muli", sans-serif;
 }
 
-.plan__title--text {
+.plans__container {
+    margin-top: 40px;
+}
+
+.plans__container__list {
+}
+
+.plans__container__list span {
+    width: fit-content;
     display: block;
-    margin-top: 15px;
     font-size: 16px;
     font-weight: 300;
     font-family: "Muli", sans-serif;
+    border: 1px solid #cdcfd8;
+    border-radius: 4px;
+    margin-left: 4px;
+    padding-left: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 15px;
+    background-color: white;
 }
 
-.plan__container__table {
-    min-width: 100%;
-    width: 100%;
-    margin-top: 60px;
-    font-family: "Muli", sans-serif;
-    border-collapse: collapse;
-    display: flex;
-    justify-content: left;
-    text-align: center;
+.plans__container__list--item {
+    width: fit-content;
+    margin-top: 15px;
+    border-radius: 4px;
+    background-color: #9793e5;
 }
 
-.plan__container__table th {
-    height: 30px;
-    width: 200px;
-    font-weight: 500;
-    font-size: 13px;
-    background-color: #f0f1f5;
-    color: #424c55;
-    border: 1pt solid #cdcfd8;
-}
-
-.plan__container__table td {
-    height: 70px;
-    border: 1pt solid #cdcfd8;
-}
-
-.plan__container__table__hour {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.plan__container__table__subject {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.plan__container__table__teacher {
-    font-size: 11px;
-    font-weight: 300;
-}
-
-.plan__container__table__room {
-    font-size: 11px;
-    font-weight: 300;
+.plans__container__list--item:nth-child(even) {
+    background-color: #cdcfd8;
 }
 
 /* scrollbar */
