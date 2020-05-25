@@ -26,12 +26,13 @@
                 <td>Add room</td>
             </tr>
         </table>
+        <p class="warning-message" th:text="${message}"></p>
     </div>
-    <!-- formularz nauczyciela-->
+    <!-- Teacher form-->
     <div class="upload-form-teacher">
         <form name="add-teacher-action" action="add-teacher-action" method="POST">
             <input type="text" placeholder="First name" class="form-container-firstname"
-                   name="add-teacher-firstname-input"> <!-- Sprawdzić klase -->
+                   name="add-teacher-firstname-input">
             <div class="form-container-line"></div>
             <input type="text" placeholder="Last name" class="form-container-lastname"
                    name="add-teacher-lastname-input">
@@ -44,18 +45,18 @@
             </div>
         </form>
     </div>
-    <!-- formularz przedmiotu-->
+    <!-- Subject form-->
     <div class="upload-form-subject">
         <form name="add-subject-action" action="add-subject-action" method="POST">
             <input type="text" placeholder="Subject name" class="form-container-subject-name"
-                   name="add-subject-name-input"> <!-- Sprawdzić klase -->
+                   name="add-subject-name-input">
             <div class="form-container-line"></div>
             <div class="form-container-buttons">
                 <button class="form-container-subject-button" type="submit">Add new subject</button>
             </div>
         </form>
     </div>
-    <!-- formularz sali-->
+    <!-- Room form-->
     <div class="upload-form-room">
         <form name="add-room-action" action="add-room-action" method="POST">
             <input type="number" placeholder="Room numer" class="form-container-room-number"
