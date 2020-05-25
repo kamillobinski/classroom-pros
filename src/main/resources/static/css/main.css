@@ -1,245 +1,214 @@
-/*
-purple - #6c63ff
-grey - #3f3d56;
-black
-*/
-
-.main-layout {
-    overflow: hidden;
+body {
+    background-color: #f9fbfa;
+    overflow-x: hidden;
 }
 
-.navbar {
+/* main container */
+.container {
+    min-height: 100vh;
+    height: 100vh;
+    min-width: 100vw;
     width: 100vw;
-    height: 80px;
-    border-bottom: 1px solid #3d315b;
+    display: table;
 }
 
-.logo {
-    height: 55px;
-    display: flex;
-    align-items: center;
+/* header */
+.header {
+    min-height: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    width: 200px;
+    min-width: 150px;
+    background-color: #f0f1f5;
+    border-right: 1px solid #cdcfd8;
+    float: left;
+    position: fixed;
 }
 
-.logo-image {
-    height: 50px;
-    margin-top: 15px;
-    padding-left: 15px;
-}
-
-.stretch {
-    width: 20%;
-    height: 55px;
+.header > * {
     float: left;
 }
 
-.authorization {
-    width: 160px;
-    height: 55px;
-    float: left;
-    display: flex;
-    align-items: center;
-    font-weight: 400;
-    font-size: 16px;
-    font-family: "Muli", sans-serif;
-}
-
-.authorization a {
-    text-decoration: none;
-    color: #3f3d56;
-    font-weight: 400;
-}
-
-.authorization a:hover {
-    color: #6c63ff;
-}
-
-.authorization-login {
-    margin-left: 2px;
-}
-
-.authorization-separator {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.authorization-register {
-    margin-left: 0;
-}
-
-.menu {
-    width: 80%;
-    height: 55px;
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Muli", sans-serif;
-    margin-top: 25px;
-}
-
-.menu-inner {
+/* logo */
+.header__logo {
     width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    font-family: "Muli", sans-serif;
+    margin-top: 30px;
+}
+
+.header__logo__img {
+    width: 140px;
+    display: block;
     margin-left: auto;
+    margin-right: auto;
 }
 
-.menu a:first-child {
-    margin-left: 15px;
+/* menu */
+.header__menu {
+    width: 100%;
+    height: calc(100vh - 153px);
+    display: table;
 }
 
-.menu a {
-    text-decoration: none;
-    color: #3f3d56;
+.header__menu__items {
+    width: 140px;
+    height: 25px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.menu a:hover {
-    color: #6c63ff;
-}
-
-.menu-item-separator {
-    width: 12px;
-    height: 12px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.circle {
-    width: 2px;
-    height: 2px;
-    border: 1px solid #3f3d56;
-    border-radius: 50%;
-}
-
-.toolbar {
-    width: calc(20% - 1px);
-    min-height: 762px;
-    height: calc(100vh - 111px);
-    float: left;
-    display: flex;
-    align-items: top;
-    justify-content: left;
-    text-align: left;
-    font-family: "Muli", sans-serif;
+.header__menu__items span {
+    width: 140px;
+    margin-bottom: 20px;
+    color: #424c55;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
     font-weight: 400;
-    color: #3f3d56;
-    background-color: #eeeeee;
-    border-right: 1px solid #3f3d5688;
+    font-family: "Muli", sans-serif;
 }
 
-.toolbar-inner {
-    margin-top: 17px;
-    margin-left: 17px;
-}
-
-.toolbar-inner-list {
-    margin-top: 0;
-}
-
-.toolbar-inner-list span:hover {
+.header__menu__items span:hover {
     color: #6c63ff;
     cursor: pointer;
 }
 
-.toolbar-inner-editor-title {
-    font-weight: 300;
-    color: #8b8a95;
-    margin-bottom: 4px;
-    font-size: 11px;
-}
-
-.workspace-inner {
-    width: 80%;
-    height: calc(100vh - 111px);
-    min-height: 762px;
-    float: left;
-    background-color: #f5f5f5;
-}
-
-.toolbar-extra {
+/* user actions */
+.header__user {
     width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    text-align: left;
-    border-bottom: 1px solid #3f3d5688;
+    display: table;
 }
 
-.toolbar-extra-project {
-    margin-left: 15px;
-    margin-top: 8px;
+.header__user__items {
+    width: 140px;
+    height: 25px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.project-title-input {
-    background-color: transparent;
+.header__user__items span {
+    width: 140px;
+    margin-bottom: 7px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header__user__items span:hover {
+    color: #6c63ff;
+    cursor: pointer;
+}
+
+.header__user__items--logged {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Muli", sans-serif;
+    color: #424c55;
+}
+
+.header__user__items--logout {
+    font-size: 13px;
     font-weight: 400;
-    font-size: 24px;
-    border: none;
     font-family: "Muli", sans-serif;
+    color: #424c55;
 }
 
-.project-description {
-    font-weight: 300;
-    color: #3f3d56;
-    font-family: "Muli", sans-serif;
-    width: 100%;
-}
+/* workspace */
 
 .workspace {
+    background-color: white;
+    width: auto;
     height: 100%;
-    background-color: #f5f5f5;
+    margin-left: 200px;
+}
+
+/* plan */
+
+.workspace__plan {
+    height: 100vh;
+    overflow-y: scroll;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.workspace__plan__inner {
+    padding: 40px;
+}
+
+.plan__title--heading {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Muli", sans-serif;
+}
+
+.plan__title--text {
+    display: block;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.plan__container__table {
+    min-width: 100%;
+    width: 100%;
+    margin-top: 60px;
+    font-family: "Muli", sans-serif;
+    border-collapse: collapse;
     display: flex;
     justify-content: left;
     text-align: center;
 }
 
-.workspace-inner table {
-    margin-top: 15px;
-    margin-left: 15px;
-    font-family: "Muli", sans-serif;
-    border: 1px solid #3f3d5688;
-}
-
-.workspace-inner th {
+.plan__container__table th {
     height: 30px;
     width: 200px;
-    font-weight: 700;
-    border: 1px solid black;
+    font-weight: 500;
+    font-size: 13px;
+    background-color: #f0f1f5;
+    color: #424c55;
+    border: 1pt solid #cdcfd8;
 }
 
-.workspace-inner td {
+.plan__container__table td {
     height: 70px;
-    border: 1px solid #3f3d5688;
+    border: 1pt solid #cdcfd8;
 }
 
-.table-lesson {
-    font-weight: 600;
-    font-size: 16px;
-    float: left;
+.plan__container__table__hour {
+    font-size: 12px;
+    font-weight: 500;
 }
 
-.table-teacher {
-    font-size: 13px;
+.plan__container__table__subject {
+    font-size: 12px;
+    font-weight: 500;
 }
 
-.table-classroom {
-    font-size: 13px;
+.plan__container__table__teacher {
+    font-size: 11px;
+    font-weight: 300;
 }
 
-.additional {
-    width: 100%;
-    height: 30px;
-    float: left;
-    background-color: #3d315b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
+.plan__container__table__room {
+    font-size: 11px;
+    font-weight: 300;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: lightgray;
 }
