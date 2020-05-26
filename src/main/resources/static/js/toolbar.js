@@ -23,3 +23,17 @@ function showLessonEditor() {
         lessonPanel.style.maxHeight = lessonPanel.scrollHeight + "px";
     }
 }
+
+function showTitleEditor() {
+    const accordions = document.getElementsByClassName("accordion");
+    const titlePanel = document.getElementById("accordion--title--panel");
+
+    accordions[0].classList.toggle("active");
+
+    if (titlePanel.style.maxHeight) {
+        titlePanel.style.maxHeight = null;
+    } else {
+        titlePanel.style.maxHeight = titlePanel.scrollHeight + "px";
+    }
+
+}

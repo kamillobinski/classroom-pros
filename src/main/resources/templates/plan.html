@@ -45,7 +45,7 @@
                 <div class="toolbar__accordions">
                     <!-- change plan title -->
                     <button class="accordion">Title editor</button>
-                    <div class="accordion_panel">
+                    <div class="accordion_panel" id ="accordion--title--panel">
                         <div class="toolbar__edit--title">
                             <form action="rename-plan" id="toolbar__edit--form" method="POST">
                                 <input type="hidden" name="planId" form="toolbar__edit--form" th:value="${currentPlan.id}"/>
@@ -112,7 +112,7 @@
         </div>
         <div class="workspace__plan">
             <div class="workspace__plan__inner">
-                <div class="plan__title">
+                <div class="plan__title" id="plan__title" onclick="showTitleEditor()">
                     <span class="plan__title--heading">Plan title</span>
                     <span class="plan__title--text" th:text="${currentPlan.name}"></span>
                 </div>

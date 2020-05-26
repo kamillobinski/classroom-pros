@@ -379,6 +379,10 @@ td a {
     padding: 40px;
 }
 
+.plan__title:hover {
+    cursor: pointer;
+}
+
 .plan__title--heading {
     font-size: 20px;
     font-weight: 500;
