@@ -45,6 +45,9 @@ public class PlanController {
         List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", reqPlanId);
         List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", reqPlanId);
 
+        // Toolbar list
+        List<Plan> allPlans = planService.getAllPlans();
+
         // Name used to display on page
         // Future use - edit lessons from plan
         Plan currentPlan = planService.getPlanById(reqPlanId);
@@ -55,6 +58,8 @@ public class PlanController {
         model.addAttribute("wednesdayData", wednesdayLessons);
         model.addAttribute("thursdayData", thursdayLessons);
         model.addAttribute("fridayData", fridayLessons);
+
+        model.addAttribute("allPlans", allPlans);
 
         model.addAttribute("currentPlan", currentPlan);
 

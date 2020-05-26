@@ -10,6 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600;700;900&display=swap"
             rel="stylesheet"
     />
+    <script type="text/javascript" src="./js/toolbar.js"></script>
 </head>
 <body style="margin: 0px !important;">
 <div class="container">
@@ -38,11 +39,45 @@
         </div>
     </div>
     <div class="workspace">
+        <!-- toolbar -->
+        <div class="workspace__toolbar">
+            <div class="workspace__toolbar__inner">
+                <div class="toolbar__accordions">
+                    <!-- change plan title -->
+                    <button class="accordion">Change plan title</button>
+                    <div class="accordion_panel">
+                        <div class="toolbar__edit--title">
+                            <span>edit title</span>
+                        </div>
+                    </div>
+                    <!-- edit lesson -->
+                    <button class="accordion">Lesson editor</button>
+                    <div class="accordion_panel">
+                        <div class="toolbar__edit--lesson">
+                            <span>edit lesson</span>
+                        </div>
+                    </div>
+                    <!-- all plans -->
+                    <button class="accordion">Available plans</button>
+                    <div class="accordion_panel">
+                        <div class="toolbar__plans">
+                            <div class="toolbar__plans--list">
+                                <div class="toolbar__plans--list--item" th:each="plan : ${allPlans}">
+                                    <a th:href="@{'/plan-' + ${plan.id}}">
+                                        <span th:text="${plan.name}"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="workspace__plan">
             <div class="workspace__plan__inner">
                 <div class="plan__title">
                     <span class="plan__title--heading">Plan title</span>
-                    <span class="plan__title--text" th:text="${currentPlan.name}" ></span>
+                    <span class="plan__title--text" th:text="${currentPlan.name}"></span>
                 </div>
                 <div class="plan__container">
                     <table class="plan__container__table">
@@ -153,5 +188,21 @@
         </div>
     </div>
 </div>
+<script>
+    var accordions = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < accordions.length; i++) {
+        accordions[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
 </body>
 </html>

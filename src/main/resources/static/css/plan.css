@@ -121,16 +121,136 @@ body {
 /* workspace */
 
 .workspace {
-    background-color: white;
     width: auto;
     height: 100%;
     margin-left: 200px;
+}
+
+/* toolbar */
+
+.workspace__toolbar {
+    width: 360px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #cdcfd8;
+    overflow: auto;
+}
+
+.workspace__toolbar__inner {
+    min-height: calc(100% - 80px);
+    height: calc(100% - 80px);
+    max-height: calc(100vh - 80px);
+}
+
+.toolbar--title {
+    color: black;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Muli", sans-serif;
+}
+
+/* all plans */
+
+.toolbar__plans--list {
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+.toolbar__plans--list span {
+    width: fit-content;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+    border: 1px solid #cdcfd8;
+    border-radius: 4px;
+    margin-left: 4px;
+    padding: 2px 15px;
+    background-color: white;
+}
+
+.toolbar__plans--list--item {
+    width: fit-content;
+    margin-top: 15px;
+    border-radius: 4px;
+    background-color: #9793e5;
+}
+
+.toolbar__plans--list--item a {
+    color: black;
+    text-decoration: none;
+}
+
+.toolbar__plans--list--item:nth-child(even) {
+    background-color: #cdcfd8;
+}
+
+/* edit title */
+
+.toolbar__edit--title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* edit lesson */
+
+.toolbar__edit--lesson {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* toolbar accordion */
+
+.toolbar__accordions {
+    margin-top: 0px;
+}
+
+.accordion {
+    width: 100%;
+    color: #444;
+    padding: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Muli", sans-serif;
+}
+
+.active,
+.accordion:hover {
+    background-color: #f0f1f5;
+}
+
+.accordion:after {
+    color: #777;
+    float: right;
+    margin-left: 5px;
+    content: "\002B";
+    font-weight: bold;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.accordion_panel {
+    padding: 0 18px;
+    max-height: 0;
+    border-bottom: 1px solid #cdcfd8;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
 }
 
 /* plan */
 
 .workspace__plan {
     height: 100vh;
+    width: auto;
     overflow-y: scroll;
     padding-top: 0;
     margin-top: 0;
