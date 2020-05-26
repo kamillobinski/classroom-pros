@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
@@ -36,19 +35,19 @@ public class PlanController {
     @Autowired
     private RoomRepository roomRepository;
 
-    @RequestMapping("/homepage-{requestedPlanId}")
-    public String selectPlan(Model model, @PathVariable int requestedPlanId) {
+    @RequestMapping("/plan-{reqPlanId}")
+    public String getRequestedPlan(Model model, @PathVariable int reqPlanId) {
         // Data displayed in table
         List<Hour> allHours = hourService.getHours();
-        List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", requestedPlanId);
-        List<Lesson> tuesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Tuesday", requestedPlanId);
-        List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", requestedPlanId);
-        List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", requestedPlanId);
-        List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", requestedPlanId);
+        List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", reqPlanId);
+        List<Lesson> tuesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Tuesday", reqPlanId);
+        List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", reqPlanId);
+        List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", reqPlanId);
+        List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", reqPlanId);
 
         // Name used to display on page
         // Future use - edit lessons from plan
-        Plan currentPlan = planService.getPlanById(requestedPlanId);
+        Plan currentPlan = planService.getPlanById(reqPlanId);
 
         model.addAttribute("hourData", allHours);
         model.addAttribute("mondayData", mondayLessons);
@@ -59,7 +58,7 @@ public class PlanController {
 
         model.addAttribute("currentPlan", currentPlan);
 
-        return "homepage";
+        return "plan";
     }
 
     @RequestMapping("/get-first-plan")

@@ -25,7 +25,7 @@ public class SignInController {
         // If user does not exist or entered password is wrong - stay on sign-in page,
         // If the entered password is correct - go to homepage.
         if (existingUser != null && existingUser.getPassword().equals(password)) {
-            return "homepage";
+            return "plan";
         } else {
             if(email == "" && password == "") {
                 model.addAttribute("message", "No data entered.");
