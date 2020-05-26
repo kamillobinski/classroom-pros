@@ -68,6 +68,11 @@ body {
     font-family: "Muli", sans-serif;
 }
 
+.header__menu__items span a {
+    text-decoration: none;
+    color: #424c55;
+}
+
 .header__menu__items span:hover {
     color: #6c63ff;
     cursor: pointer;
