@@ -15,7 +15,7 @@ public class Plan {
     private int id;
     private String name;
 
-    @OneToMany(targetEntity = Lesson.class, mappedBy = "room")
+    @OneToMany(targetEntity = Lesson.class, mappedBy = "plan")
     private List<Lesson> lessons;
 
     public int getId() {
