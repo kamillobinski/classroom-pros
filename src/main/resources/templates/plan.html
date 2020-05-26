@@ -47,7 +47,11 @@
                     <button class="accordion">Change plan title</button>
                     <div class="accordion_panel">
                         <div class="toolbar__edit--title">
-                            <span>edit title</span>
+                            <form action="rename-plan" id="toolbar__edit--form" method="POST">
+                                <input type="hidden" name="planId" form="toolbar__edit--form" th:value="${currentPlan.id}"/>
+                                <input type="text" name="planName" form="toolbar__edit--form" th:value="${currentPlan.name}" class="toolbar__edit--form--input"/>
+                                <button type="submit" form="toolbar__edit--form" class="toolbar__edit--form--submit">Submit</button>
+                            </form>
                         </div>
                     </div>
                     <!-- edit lesson -->

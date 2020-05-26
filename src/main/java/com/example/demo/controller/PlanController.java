@@ -66,12 +66,13 @@ public class PlanController {
         return "plan";
     }
 
-    @RequestMapping("/get-first-plan")
-    public String getFirstPlan(Model model){
-        int firstPlanId = planService.getAllPlans().get(0).getId();
-        System.out.println("clicked");
-        return "redirect:/homepage-"+firstPlanId;
+    @RequestMapping("/rename-plan")
+    public String renamePlan(@RequestParam("planId") int id, @RequestParam("planName") String name) {
+        Plan existingPlan = planService.getPlanById(id);
+        existingPlan.setName(name);
+        planService.savePlan(existingPlan);
 
+        return "redirect:/plan-" + id;
     }
 
 

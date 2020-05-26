@@ -189,8 +189,41 @@ body {
 /* edit title */
 
 .toolbar__edit--title {
-    margin-top: 15px;
+    width: 100%;
+    margin-top: 8px;
     margin-bottom: 15px;
+}
+
+.toolbar__edit--form--input {
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    min-width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(205, 207, 216, 0.3);
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.toolbar__edit--form--submit {
+    margin-top: 7px;
+    display: block;
+    background-color: #F0F1F5;
+    border: 1px solid #cdcfd8;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+    float: right;
+    clear: right;
+    margin-bottom: 15px;
+}
+
+.toolbar__edit--form--submit:hover {
+    cursor: pointer;
 }
 
 /* edit lesson */
