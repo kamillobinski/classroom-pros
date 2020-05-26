@@ -12,7 +12,7 @@
     />
     <script type="text/javascript" src="./js/toolbar.js"></script>
 </head>
-<body style="margin: 0px !important;">
+<body style="margin: 0px !important;" onload="showLessonEditor()">
 <div class="container">
     <!-- header -->
     <div class="header">
@@ -56,7 +56,7 @@
                     </div>
                     <!-- edit lesson -->
                     <button class="accordion" id="accordion--lesson">Lesson editor</button>
-                    <div class="accordion_panel">
+                    <div class="accordion_panel" id="accordion--lesson--panel">
                         <div class="toolbar__edit--lesson">
                             <form action="lesson-update" id="toolbar__edit--lesson--form" method="POST">
                                 <!-- subject -->
@@ -235,21 +235,5 @@
         </div>
     </div>
 </div>
-<script>
-    var accordions = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < accordions.length; i++) {
-        accordions[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    }
-</script>
 </body>
 </html>
