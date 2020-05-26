@@ -1,0 +1,163 @@
+body {
+    background-color: #f9fbfa;
+    overflow-x: hidden;
+}
+
+/* main container */
+.container {
+    min-height: 100vh;
+    height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    display: table;
+}
+
+/* header */
+.header {
+    min-height: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    width: 200px;
+    min-width: 150px;
+    background-color: #f0f1f5;
+    border-right: 1px solid #cdcfd8;
+    float: left;
+    position: fixed;
+}
+
+.header > * {
+    float: left;
+}
+
+/* logo */
+.header__logo {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.header__logo__img {
+    width: 140px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* menu */
+.header__menu {
+    width: 100%;
+    height: calc(100vh - 153px);
+    display: table;
+}
+
+.header__menu__items {
+    width: 140px;
+    height: 25px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.header__menu__items span {
+    width: 140px;
+    margin-bottom: 20px;
+    color: #424c55;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Muli", sans-serif;
+}
+
+.header__menu__items span:hover {
+    color: #6c63ff;
+    cursor: pointer;
+}
+
+#active {
+    color: #6c63ff;
+}
+
+/* user actions */
+.header__user {
+    width: 100%;
+    display: table;
+}
+
+.header__user__items {
+    width: 140px;
+    height: 25px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.header__user__items span {
+    width: 140px;
+    margin-bottom: 7px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header__user__items span:hover {
+    color: #6c63ff;
+    cursor: pointer;
+}
+
+.header__user__items--logged {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Muli", sans-serif;
+    color: #424c55;
+}
+
+.header__user__items--logout {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Muli", sans-serif;
+    color: #424c55;
+}
+
+/* workspace */
+
+.workspace {
+    background-color: white;
+    width: auto;
+    height: 100%;
+    margin-left: 200px;
+}
+
+.workspace__plans {
+    height: 100vh;
+    overflow-y: scroll;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.workspace__plans__inner {
+    padding: 40px;
+}
+
+.plans__title--heading {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Muli", sans-serif;
+}
+
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: lightgray;
+}

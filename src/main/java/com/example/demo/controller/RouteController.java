@@ -26,6 +26,12 @@ public class RouteController {
         return "sign-up";
     }
 
+    // Homepage
+    @RequestMapping("/homepage")
+    public String getHomepage() {
+        return "homepage";
+    }
+
     // Upload
     @RequestMapping("/upload")
     public String getAddItem() {
