@@ -37,43 +37,27 @@ public class PlanController {
     private RoomRepository roomRepository;
 
     @RequestMapping("/homepage-{requestedPlanId}")
-    public String selectPlan(Model model,@PathVariable int requestedPlanId) {
-        List<Plan> plans = planService.getAllPlans();
-        model.addAttribute("plans", plans);
-
+    public String selectPlan(Model model, @PathVariable int requestedPlanId) {
+        // Data displayed in table
+        List<Hour> allHours = hourService.getHours();
         List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", requestedPlanId);
-        model.addAttribute("mondayData", mondayLessons);
-
         List<Lesson> tuesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Tuesday", requestedPlanId);
-        model.addAttribute("tuesdayData", tuesdayLessons);
-
         List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", requestedPlanId);
-        model.addAttribute("wednesdayData", wednesdayLessons);
-
         List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", requestedPlanId);
-        model.addAttribute("thursdayData", thursdayLessons);
-
         List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", requestedPlanId);
+
+        // Name used to display on page
+        // Future use - edit lessons from plan
+        Plan currentPlan = planService.getPlanById(requestedPlanId);
+
+        model.addAttribute("hourData", allHours);
+        model.addAttribute("mondayData", mondayLessons);
+        model.addAttribute("tuesdayData", tuesdayLessons);
+        model.addAttribute("wednesdayData", wednesdayLessons);
+        model.addAttribute("thursdayData", thursdayLessons);
         model.addAttribute("fridayData", fridayLessons);
 
-        List<Plan> allPlans = planService.getAllPlans();
-        model.addAttribute("allPlans", allPlans);
-
-        Plan currentPlan = planService.getPlanById(requestedPlanId);
         model.addAttribute("currentPlan", currentPlan);
-
-        List<Hour> allHours = hourService.getHours();
-        model.addAttribute("hourData", allHours);
-
-        // Used in the lesson edit form
-        List<Subject> allSubjects = subjectRepository.findAll();
-        model.addAttribute("allSubjects", allSubjects);
-
-        List<Teacher> allTeachers = teacherRepository.findAll();
-        model.addAttribute("allTeachers", allTeachers);
-
-        List<Room> allRooms = roomRepository.findAll();
-        model.addAttribute("allRooms", allRooms);
 
         return "homepage";
     }
