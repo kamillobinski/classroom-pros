@@ -48,9 +48,16 @@ public class PlanController {
         // Toolbar list
         List<Plan> allPlans = planService.getAllPlans();
 
-        // Name used to display on page
-        // Future use - edit lessons from plan
+        /* Name used to display on page
+         * Usage:
+         *  - renaming plan
+         *  - lesson editing */
         Plan currentPlan = planService.getPlanById(reqPlanId);
+
+        // Used to fill lesson editor form
+        List<Subject> allSubjects = subjectRepository.findAll();
+        List<Teacher> allTeachers = teacherRepository.findAll();
+        List<Room> allRooms = roomRepository.findAll();
 
         model.addAttribute("hourData", allHours);
         model.addAttribute("mondayData", mondayLessons);
@@ -58,10 +65,11 @@ public class PlanController {
         model.addAttribute("wednesdayData", wednesdayLessons);
         model.addAttribute("thursdayData", thursdayLessons);
         model.addAttribute("fridayData", fridayLessons);
-
         model.addAttribute("allPlans", allPlans);
-
         model.addAttribute("currentPlan", currentPlan);
+        model.addAttribute("allSubjects", allSubjects);
+        model.addAttribute("allTeachers", allTeachers);
+        model.addAttribute("allRooms", allRooms);
 
         return "plan";
     }

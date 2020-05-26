@@ -233,6 +233,83 @@ body {
     margin-bottom: 15px;
 }
 
+.form--subject {
+    margin-bottom: 7px;
+}
+
+.form--subject select {
+    font-size: 12px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.form--subject option {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Muli", sans-serif;
+}
+
+.form--subject label {
+    font-size: 11px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.editor-lesson-subject {
+    width: calc(100% - 80px);
+    float: right;
+}
+
+.form--teacher {
+    margin-bottom: 7px;
+}
+
+.form--teacher select {
+    font-size: 12px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.form--teacher option {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Muli", sans-serif;
+}
+
+.form--teacher label {
+    font-size: 11px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.editor-lesson-teacher {
+    width: calc(100% - 80px);
+    float: right;
+}
+
+.editor-lesson-room {
+    width: calc(100% - 80px);
+    float: right;
+}
+
+.form--room label {
+    font-size: 11px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.form--room select {
+    font-size: 12px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+}
+
+.form--room option {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Muli", sans-serif;
+}
+
 /* toolbar accordion */
 
 .toolbar__accordions {
@@ -280,6 +357,15 @@ body {
 }
 
 /* plan */
+
+td a {
+    text-decoration: none;
+    color: black;
+}
+
+.link-expander {
+    width: 100%;
+}
 
 .workspace__plan {
     height: 100vh;
