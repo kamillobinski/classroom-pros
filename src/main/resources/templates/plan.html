@@ -90,7 +90,7 @@
                                         </option>
                                     </select>
                                 </div>
-                                <button type="submit" form="toolbar__edit--lesson--form" class="toolbar__edit--form--submit">Submit</button>
+                                <button type="submit" form="toolbar__edit--lesson--form" class="toolbar__edit--form--submit" th:disabled="${editedLessonId == null}">Submit</button>
                             </form>
                         </div>
                     </div>

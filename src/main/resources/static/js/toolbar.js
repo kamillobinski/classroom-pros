@@ -18,7 +18,7 @@ function showLessonEditor() {
     }
 
     // Opening lesson editor when path is '/request-lesson-update'
-    if (path[0] == "/request" && path[1] == "lesson" && path[2] == "update") {
+    if (path[0] === "/request" && path[1] === "lesson" && path[2] === "update") {
         accordions[1].classList.toggle("active");
         lessonPanel.style.maxHeight = lessonPanel.scrollHeight + "px";
     }
