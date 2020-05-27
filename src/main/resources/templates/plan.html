@@ -59,12 +59,15 @@
                     <div class="accordion_panel" id="accordion--lesson--panel">
                         <div class="toolbar__edit--lesson">
                             <form action="lesson-update" id="toolbar__edit--lesson--form" method="POST">
-                                <!-- subject -->
-                                <div class="form--subject">
-                                    <p>Currently editing:
+                                <div class="toolbar__edit--lesson--details">
+                                    <span class="lesson--details--title">Date: </span>
+                                    <p class="lesson--details--text">
                                         <span th:text="${currentDay != null} ? ${currentDay.name}:' '"/>
                                         <span th:text="${currentHour != null} ? ${currentHour.start + ' - ' + currentHour.end}:' '"/>
                                     </p>
+                                </div>
+                                <!-- subject -->
+                                <div class="form--subject">
                                     <input type="hidden" name="lessonId" form="toolbar__edit--lesson--form" th:value="${editedLessonId}"/>
                                     <input type="hidden" name="planId" form="toolbar__edit--lesson--form" th:value="${currentPlan.id}"/>
                                     <label for="editor-lesson-subject">Subject: </label>

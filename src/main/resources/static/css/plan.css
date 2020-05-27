@@ -228,9 +228,33 @@ body {
 
 /* edit lesson */
 
+.toolbar__edit--lesson--details {
+    margin: 0 0 6px;
+}
+
 .toolbar__edit--lesson {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.lesson--details--title {
+    font-size: 11px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+    color: #6f67dc;
+}
+
+.lesson--details--text {
+    display: inline-block;
+    margin: 0;
+    float: right;
+}
+
+.lesson--details--text span {
+    font-size: 12px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+    color: #6f67dc;
 }
 
 .form--subject {
