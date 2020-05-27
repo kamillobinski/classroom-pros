@@ -14,6 +14,13 @@ public class RouteController {
     @Autowired
     private PlanService planService;
 
+    /* Default first page, currently it will be homepage
+     * until spring security is implemented */
+    @RequestMapping("/")
+    public String getDefaultRoute() {
+        return "homepage";
+    }
+
     // Sign in page
     @RequestMapping("/sign-in")
     public String getSignIn() {
