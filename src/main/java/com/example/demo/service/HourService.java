@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.HourRepository;;
+import com.example.demo.repository.HourRepository;;
 import com.example.demo.entity.Hour;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

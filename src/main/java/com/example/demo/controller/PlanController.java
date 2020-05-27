@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.RoomRepository;
-import com.example.demo.dao.SubjectRepository;
-import com.example.demo.dao.TeacherRepository;
+import com.example.demo.repository.RoomRepository;
+import com.example.demo.repository.SubjectRepository;
+import com.example.demo.repository.TeacherRepository;
 import com.example.demo.entity.*;
 import com.example.demo.service.HourService;
 import com.example.demo.service.LessonService;

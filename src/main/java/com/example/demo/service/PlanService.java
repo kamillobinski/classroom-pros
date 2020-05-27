@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 
-import com.example.demo.dao.PlanRepository;
+import com.example.demo.repository.PlanRepository;
 import com.example.demo.entity.Plan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

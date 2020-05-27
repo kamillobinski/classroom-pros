@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.*;
+import com.example.demo.repository.*;
 import com.example.demo.entity.*;
 import com.example.demo.service.HourService;
 import com.example.demo.service.LessonService;
