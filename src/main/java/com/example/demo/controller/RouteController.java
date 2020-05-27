@@ -41,7 +41,7 @@ public class RouteController {
 
     // Upload
     @RequestMapping("/admin-panel")
-    public String getAddItem() {
+    public String getAdminPanel() {
         return "admin-panel";
     }
 
