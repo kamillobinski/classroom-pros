@@ -56,6 +56,19 @@ public class LessonController {
         List<Teacher> allTeachers = teacherRepository.findAll();
         List<Room> allRooms = roomRepository.findAll();
 
+        //for displaying current editing day and hour
+        Day currentDay;
+        Hour currentHour;
+        Lesson currentLesson = lessonRepository.findById(lessonId).orElse(null);
+        //initialize data for instance when there is no selected lesson
+        currentDay = currentLesson.getDay();
+        currentHour = currentLesson.getHour();
+
+
+
+
+
+
         model.addAttribute("selectedLessonSubject", lesson.getSubject().getSubject_id());
         model.addAttribute("selectedLessonTeacher", lesson.getTeacher().getTeacher_id());
         model.addAttribute("selectedLessonRoom", lesson.getRoom().getRoom_id());
@@ -76,6 +89,9 @@ public class LessonController {
 
         model.addAttribute("editedLessonId", lessonId);
         model.addAttribute("currentPlan", currentPlan);
+
+        model.addAttribute("currentDay",currentDay);
+        model.addAttribute("currentHour",currentHour);
 
         return "plan";
     }

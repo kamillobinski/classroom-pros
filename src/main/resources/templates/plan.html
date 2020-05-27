@@ -61,6 +61,10 @@
                             <form action="lesson-update" id="toolbar__edit--lesson--form" method="POST">
                                 <!-- subject -->
                                 <div class="form--subject">
+                                    <p>Currently editing:
+                                        <span th:text="${currentDay != null} ? ${currentDay.name}:' '"/>
+                                        <span th:text="${currentHour != null} ? ${currentHour.start + ' - ' + currentHour.end}:' '"/>
+                                    </p>
                                     <input type="hidden" name="lessonId" form="toolbar__edit--lesson--form" th:value="${editedLessonId}"/>
                                     <input type="hidden" name="planId" form="toolbar__edit--lesson--form" th:value="${currentPlan.id}"/>
                                     <label for="editor-lesson-subject">Subject: </label>
