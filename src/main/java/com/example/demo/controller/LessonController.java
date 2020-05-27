@@ -40,7 +40,7 @@ public class LessonController {
 
     @RequestMapping("/request-lesson-update-{lessonId}-{planId}")
     public String requestLessonUpdate(Model model, @PathVariable int lessonId, @PathVariable int planId) {
-        Lesson lesson = lessonRepository.findById(lessonId).orElse(null);
+        Lesson currentLesson = lessonRepository.findById(lessonId).orElse(null);
 
         List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", planId);
         List<Lesson> tuesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Tuesday", planId);
@@ -56,22 +56,19 @@ public class LessonController {
         List<Teacher> allTeachers = teacherRepository.findAll();
         List<Room> allRooms = roomRepository.findAll();
 
-        //for displaying current editing day and hour
-        Day currentDay;
-        Hour currentHour;
-        Lesson currentLesson = lessonRepository.findById(lessonId).orElse(null);
-        //initialize data for instance when there is no selected lesson
-        currentDay = currentLesson.getDay();
-        currentHour = currentLesson.getHour();
+        // Data of the selected lesson,
+        // will be inserted into the lesson editor
+        int selectedLessonSubject = currentLesson.getSubject().getSubject_id();
+        int selectedLessonTeacher = currentLesson.getTeacher().getTeacher_id();
+        int selectedLessonRoom = currentLesson.getRoom().getRoom_id();
 
+        // To display time and day of the currently edited lesson
+        Day currentDay = currentLesson.getDay();
+        Hour currentHour = currentLesson.getHour();
 
-
-
-
-
-        model.addAttribute("selectedLessonSubject", lesson.getSubject().getSubject_id());
-        model.addAttribute("selectedLessonTeacher", lesson.getTeacher().getTeacher_id());
-        model.addAttribute("selectedLessonRoom", lesson.getRoom().getRoom_id());
+        model.addAttribute("selectedLessonSubject", selectedLessonSubject);
+        model.addAttribute("selectedLessonTeacher", selectedLessonTeacher);
+        model.addAttribute("selectedLessonRoom", selectedLessonRoom);
 
         model.addAttribute("mondayData", mondayLessons);
         model.addAttribute("tuesdayData", tuesdayLessons);
@@ -90,8 +87,8 @@ public class LessonController {
         model.addAttribute("editedLessonId", lessonId);
         model.addAttribute("currentPlan", currentPlan);
 
-        model.addAttribute("currentDay",currentDay);
-        model.addAttribute("currentHour",currentHour);
+        model.addAttribute("currentDay", currentDay);
+        model.addAttribute("currentHour", currentHour);
 
         return "plan";
     }
