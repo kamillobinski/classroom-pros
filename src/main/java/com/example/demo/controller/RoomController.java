@@ -31,6 +31,6 @@ public class RoomController {
                 model.addAttribute("message", "Could not add room without data.");
             }
         }
-        return "upload";
+        return "admin-panel";
     }
 }

@@ -33,6 +33,6 @@ public class TeacherController {
                 model.addAttribute("message", "Could not add teacher without data.");
             }
         }
-        return "upload";
+        return "admin-panel";
     }
 }

@@ -33,9 +33,9 @@ public class RouteController {
     }
 
     // Upload
-    @RequestMapping("/upload")
+    @RequestMapping("/admin-panel")
     public String getAddItem() {
-        return "upload";
+        return "admin-panel";
     }
 
     // All plans

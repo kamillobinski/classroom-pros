@@ -31,6 +31,6 @@ public class SubjectController {
                 model.addAttribute("message", "Could not add subject without data.");
             }
         }
-        return "upload";
+        return "admin-panel";
     }
 }
