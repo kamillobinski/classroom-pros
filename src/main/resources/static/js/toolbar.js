@@ -1,12 +1,12 @@
 function showLessonEditor() {
-    const accordions = document.getElementsByClassName("accordion");
-    const lessonPanel = document.getElementById('accordion--lesson--panel');
-    const path = window.location.pathname.split("-");
+    const ACCORDIONS = document.getElementsByClassName("accordion");
+    const LESSON_PANEL = document.getElementById('accordion--lesson--panel');
+    const PATH = window.location.pathname.split("-");
     let i;
 
     // Default accordion behavior
-    for (i = 0; i < accordions.length; i++) {
-        accordions[i].addEventListener("click", function () {
+    for (i = 0; i < ACCORDIONS.length; i++) {
+        ACCORDIONS[i].addEventListener("click", function () {
             this.classList.toggle("active");
             const panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
@@ -18,9 +18,9 @@ function showLessonEditor() {
     }
 
     // Opening lesson editor when path is '/request-lesson-update'
-    if (path[0] === "/request" && path[1] === "lesson" && path[2] === "update") {
-        accordions[1].classList.toggle("active");
-        lessonPanel.style.maxHeight = lessonPanel.scrollHeight + "px";
+    if (PATH[0] === "/request" && PATH[1] === "lesson" && PATH[2] === "update") {
+        ACCORDIONS[1].classList.toggle("active");
+        LESSON_PANEL.style.maxHeight = LESSON_PANEL.scrollHeight + "px";
 
         // Select the currently edited lesson in the table
         selectEditedLesson();
@@ -28,15 +28,15 @@ function showLessonEditor() {
 }
 
 function showTitleEditor() {
-    const accordions = document.getElementsByClassName("accordion");
-    const titlePanel = document.getElementById("accordion--title--panel");
+    const ACCORDIONS = document.getElementsByClassName("accordion");
+    const TITLE_PANEL = document.getElementById("accordion--title--panel");
 
-    accordions[0].classList.toggle("active");
+    ACCORDIONS[0].classList.toggle("active");
 
-    if (titlePanel.style.maxHeight) {
-        titlePanel.style.maxHeight = null;
+    if (TITLE_PANEL.style.maxHeight) {
+        TITLE_PANEL.style.maxHeight = null;
     } else {
-        titlePanel.style.maxHeight = titlePanel.scrollHeight + "px";
+        TITLE_PANEL.style.maxHeight = TITLE_PANEL.scrollHeight + "px";
     }
 
 }
