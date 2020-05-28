@@ -21,6 +21,9 @@ function showLessonEditor() {
     if (path[0] === "/request" && path[1] === "lesson" && path[2] === "update") {
         accordions[1].classList.toggle("active");
         lessonPanel.style.maxHeight = lessonPanel.scrollHeight + "px";
+
+        // Select the currently edited lesson in the table
+        selectEditedLesson();
     }
 }
 
@@ -36,4 +39,21 @@ function showTitleEditor() {
         titlePanel.style.maxHeight = titlePanel.scrollHeight + "px";
     }
 
+}
+
+function selectEditedLesson() {
+    // Collect all links
+    const A_TAGS = document.getElementsByTagName("a");
+    // Take path of the current page
+    const FULL_PATH = window.location.pathname;
+
+    // Find the current page path in the links
+    for (let i = 0; i < A_TAGS.length; i++) {
+        if (A_TAGS[i].pathname == FULL_PATH) {
+            // If link was found get its parent (td) and apply new style
+            let parentDiv = A_TAGS[i].parentNode;
+            parentDiv.style.background = "#F0F1F5";
+            break;
+        }
+    }
 }
