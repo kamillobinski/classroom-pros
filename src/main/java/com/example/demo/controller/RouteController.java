@@ -59,4 +59,28 @@ public class RouteController {
     public  String getAdminPanel(){
         return "admin-panel";
     }
+
+    //Admin panel sub-site
+    @RequestMapping("/admin-panel/user-manager")
+    public  String getUserManager(){
+        return "user-manager";
+    }
+
+    //Admin panel sub-site
+    @RequestMapping("/admin-panel/lesson-manager")
+    public  String getLessonManager(){
+        return "lesson-manager";
+    }
+
+    //Admin panel sub-site
+    @RequestMapping("/admin-panel/user-view")
+    public  String getUserView(){
+        return "user-view";
+    }
+
+    //Admin panel sub-site
+    @RequestMapping("/admin-panel/lesson-view")
+    public  String getLessonView(){
+        return "lesson-view";
+    }
 }
