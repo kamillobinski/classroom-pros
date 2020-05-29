@@ -14,11 +14,12 @@ public class RouteController {
     @Autowired
     private PlanService planService;
 
-    /* Default first page, currently it will be homepage
-     * until spring security is implemented */
+    /*
+    Sign in is new default route due to security reason.
+     */
     @RequestMapping("/")
     public String getDefaultRoute() {
-        return "homepage";
+        return "sign-in";
     }
 
     // Sign in page
@@ -39,10 +40,10 @@ public class RouteController {
         return "homepage";
     }
 
-    // Upload
-    @RequestMapping("/admin-panel")
-    public String getAdminPanel() {
-        return "admin-panel";
+    // Admin panel old version
+    @RequestMapping("/admin-panel-old")
+    public String getAdminPanelOld() {
+        return "admin-panel-old";
     }
 
     // All plans
@@ -51,5 +52,11 @@ public class RouteController {
         List<Plan> allPlans = planService.getAllPlans();
         model.addAttribute("allPlans", allPlans);
         return "plans";
+    }
+
+    //Admin panel new version
+    @RequestMapping("/admin-panel")
+    public  String getAdminPanel(){
+        return "admin-panel";
     }
 }
