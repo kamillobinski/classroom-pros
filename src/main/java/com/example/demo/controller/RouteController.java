@@ -61,26 +61,26 @@ public class RouteController {
     }
 
     //Admin panel sub-site
-    @RequestMapping("/admin-panel/user-manager")
+    @RequestMapping("/user-manager")
     public  String getUserManager(){
         return "user-manager";
     }
 
     //Admin panel sub-site
-    @RequestMapping("/admin-panel/lesson-manager")
+    @RequestMapping("/lesson-manager")
     public  String getLessonManager(){
         return "lesson-manager";
     }
 
     //Admin panel sub-site
-    @RequestMapping("/admin-panel/user-view")
+    @RequestMapping("/users-view")
     public  String getUserView(){
-        return "user-view";
+        return "users-view";
     }
 
     //Admin panel sub-site
-    @RequestMapping("/admin-panel/lesson-view")
+    @RequestMapping("/lessons-view")
     public  String getLessonView(){
-        return "lesson-view";
+        return "lessons-view";
     }
 }
