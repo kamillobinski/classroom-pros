@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
@@ -83,5 +84,15 @@ public class PlanController {
         return "redirect:/plan-" + id;
     }
 
+    @Transactional
+    @RequestMapping("/delete-plan-{planId}")
+    public String deletePlan(@PathVariable("planId") int id) {
+        // Delete all lessons from current plan
+        lessonService.deleteLessonByPlanId(id);
+        // Delete plan
+        planService.deletePlanById(id);
+
+        return "redirect:/plans";
+    }
 
 }

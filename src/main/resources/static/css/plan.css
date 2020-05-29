@@ -157,9 +157,19 @@ body {
     padding-bottom: 15px;
 }
 
-.toolbar__plans--list span {
+#delete--icon {
+    z-index: 1;
+    margin-left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 11px;
+}
+
+.plan--name {
+    z-index: 2;
     width: fit-content;
-    display: block;
+    display: inline-block;
     font-size: 14px;
     font-weight: 300;
     font-family: "Muli", sans-serif;
@@ -171,15 +181,39 @@ body {
 }
 
 .toolbar__plans--list--item {
+    z-index: auto;
     width: fit-content;
     margin-top: 15px;
     border-radius: 4px;
     background-color: #9793e5;
+    transition: 0.5s ease-in-out;
+    position: relative;
 }
 
-.toolbar__plans--list--item a {
+.toolbar__plans--list--item:hover {
+    margin-right: 26px;
+}
+
+.toolbar__plans--list--item:hover #show__plan--link {
+    margin-left: 26px;
+}
+
+#delete__plan--link {
+    z-index: 1;
     color: black;
     text-decoration: none;
+}
+
+#show__plan--link {
+    z-index: 2;
+    color: black;
+    text-decoration: none;
+    position: relative;
+    transition: 0.5s ease-in-out;
+}
+
+.plan--name {
+    transition: 0.5s ease-in-out;
 }
 
 .toolbar__plans--list--item:nth-child(even) {

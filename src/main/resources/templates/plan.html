@@ -107,8 +107,11 @@
                         <div class="toolbar__plans">
                             <div class="toolbar__plans--list">
                                 <div class="toolbar__plans--list--item" th:each="plan : ${allPlans}">
-                                    <a th:href="@{'/plan-' + ${plan.id}}">
-                                        <span th:text="${plan.name}"></span>
+                                    <a th:href="@{'/delete-plan-' + ${plan.id}}" id="delete__plan--link">
+                                        <img id="delete--icon" src="utils/delete.png" alt="delete"/>
+                                    </a>
+                                    <a th:href="@{'/plan-' + ${plan.id}}" id="show__plan--link">
+                                        <span class="plan--name" th:text="${plan.name}"></span>
                                     </a>
                                 </div>
                             </div>
