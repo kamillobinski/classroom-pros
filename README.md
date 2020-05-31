@@ -56,5 +56,5 @@ Will be described soon.
 
 ## License
 
-Apache 2.0
+Distributed under the MIT License. See ```LICENSE``` for more information.
 
