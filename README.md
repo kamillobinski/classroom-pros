@@ -26,9 +26,9 @@ Access the deployed web application at: http://localhost:8081/
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://eu-cdbr-west-03.cleardb.net:3306/heroku_62e9fedd716cac1
-    username: b92419f7b42828
-    password: f36769ba
+    url: jdbc:mysql://{hoster_domain}:{port}/{database}
+    username: {database username}
+    password: {database password}
     hikari:
       minimumIdle: 1
       maximumPoolSize: 8
@@ -36,7 +36,6 @@ spring:
     hibernate:
       ddl-auto: update
 
-## If default port already in use
 server:
   port: 8081
 ```
