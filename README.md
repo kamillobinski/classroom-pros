@@ -21,7 +21,7 @@ Quick info on how to run a Spring Boot application.
 
 Access the deployed web application at: http://localhost:8081/
 
-**Note**: this projects by default uses ClearDB MySQL on [Heroku](heroku.com) platform. You can change it in the ```application.yml``` file.
+**Note**: this projects by default uses ClearDB MySQL on [Heroku](https://heroku.com) platform. You can change it in the ```application.yml``` file.
 
 ```yaml
 spring:
