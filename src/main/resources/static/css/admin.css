@@ -9,6 +9,18 @@ body {
     font-family: "Muli", sans-serif;
     background-color: #f9fbfa;
 }
+
+.layout{
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 250px;
+    width: 100%;
+    height: 100%;
+}
+
+
+
 .sidebar {
     position: fixed;
     left: -250px;

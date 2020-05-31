@@ -3,12 +3,18 @@ package com.example.demo.controller;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class UserController {
+
+    /*
+    Works in progress, after removing RestController some methods may not work properly yet
+     */
 
     @Autowired
     private UserService userService;
@@ -28,9 +34,11 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/users")
-    public  List <User> findAllUsers(){
-        return userService.getUsers();
+    @GetMapping("/users-view")
+    public  String findAllUsers(Model model){
+        List <User> allUsers = userService.getUsers();
+        model.addAttribute("allUsers", allUsers);
+        return "users-view";
     }
 
     @GetMapping("/userByEmail/{email}")
