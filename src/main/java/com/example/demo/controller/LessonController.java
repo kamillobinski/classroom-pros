@@ -8,6 +8,7 @@ import com.example.demo.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -108,6 +109,14 @@ public class LessonController {
         lessonRepository.save(lesson);
 
         return "redirect:/plan-" + planId;
+    }
+
+    @GetMapping("/lessons-view")
+    public String findAllLessons(Model model){
+        List <Lesson> allLessons = lessonService.getLessons();
+        model.addAttribute("allLessons", allLessons);
+
+        return "lessons-view";
     }
 
 }
