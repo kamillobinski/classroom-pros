@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Add new item</title>
     <link rel="stylesheet" href="./css/homepage.css"/>
@@ -67,6 +67,81 @@
             </div>
         </form>
     </div>
+</div>
+
+<div class="teacher-table">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Title</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacher : ${allTeachers}">
+            <td th:text="${teacher.teacher_id}" name="teacherId"></td>
+            <td th:text="${teacher.first_name}"></td>
+            <td th:text="${teacher.last_name}"></td>
+            <td th:text="${teacher.title}"></td>
+            <td><a class="teacher-edit-button" type="submit">
+                <button th:text="Edit"/></a>
+            </td>
+            <td><a th:href="@{'/delete-teacher-' + ${teacher.teacher_id}}" class="teacher-delete-button" name="teacher-delete-button">
+                <button th:text="Delete"/></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="room-table">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room : ${allRooms}">
+            <td th:text="${room.room_id}"></td>
+            <td th:text="${room.number}"></td>
+            <td><a class="room-edit-button" type="submit">
+                <button th:text="Edit"/></a>
+            </td>
+            <td><a th:href="@{'/delete-room-' + ${room.room_id}}" class="room-delete-button" name="room-delete-button">
+                <button th:text="Delete"/></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="subject-table">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Subject name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subject : ${allSubjects}">
+            <td th:text="${subject.subject_id}"></td>
+            <td th:text="${subject.subjectName}"></td>
+            <td><a class="subject-edit-button" type="submit">
+                <button th:text="Edit"/></a>
+            </td>
+            <td><a th:href="@{'/delete-subject-' + ${subject.subject_id}}" class="subject-delete-button" name="subject-delete-button">
+                <button th:text="Delete"/></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
