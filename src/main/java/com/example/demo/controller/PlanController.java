@@ -7,7 +7,10 @@ import com.example.demo.entity.*;
 import com.example.demo.service.HourService;
 import com.example.demo.service.LessonService;
 import com.example.demo.service.PlanService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,9 @@ import java.util.List;
 
 @Controller
 public class PlanController {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private PlanService planService;
@@ -60,6 +66,10 @@ public class PlanController {
         List<Teacher> allTeachers = teacherRepository.findAll();
         List<Room> allRooms = roomRepository.findAll();
 
+        // Get logged user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
         model.addAttribute("hourData", allHours);
         model.addAttribute("mondayData", mondayLessons);
         model.addAttribute("tuesdayData", tuesdayLessons);
@@ -71,6 +81,7 @@ public class PlanController {
         model.addAttribute("allSubjects", allSubjects);
         model.addAttribute("allTeachers", allTeachers);
         model.addAttribute("allRooms", allRooms);
+        model.addAttribute("log_user_mail", loggedUser.getName());
 
         return "plan";
     }

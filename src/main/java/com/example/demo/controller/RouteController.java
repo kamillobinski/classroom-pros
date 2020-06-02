@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 import com.example.demo.entity.Plan;
+import com.example.demo.entity.User;
 import com.example.demo.service.PlanService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +18,9 @@ public class RouteController {
 
     @Autowired
     private PlanService planService;
+
+    @Autowired
+    private UserService userService;
 
     // Sign in page
     @RequestMapping(value={"/", "/login", "sign-in"} , method = RequestMethod.GET)
@@ -28,8 +35,12 @@ public class RouteController {
     }
 
     // Homepage
-    @RequestMapping("/homepage")
-    public String getHomepage() {
+    @RequestMapping(value = "/homepage", method = RequestMethod.GET)
+    public String getHomepage(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
+        model.addAttribute("log_user_mail", loggedUser.getName());
         return "homepage";
     }
 
@@ -42,8 +53,15 @@ public class RouteController {
     // All plans
     @RequestMapping("/plans")
     public String getPlans(Model model) {
+        // get plans
         List<Plan> allPlans = planService.getAllPlans();
+
+        // get logged user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
         model.addAttribute("allPlans", allPlans);
+        model.addAttribute("log_user_mail", loggedUser.getName());
         return "plans";
     }
 

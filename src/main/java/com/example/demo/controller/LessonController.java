@@ -5,7 +5,10 @@ import com.example.demo.entity.*;
 import com.example.demo.service.HourService;
 import com.example.demo.service.LessonService;
 import com.example.demo.service.PlanService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +20,9 @@ import java.util.List;
 
 @Controller
 public class LessonController {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private LessonRepository lessonRepository;
@@ -67,6 +73,10 @@ public class LessonController {
         Day currentDay = currentLesson.getDay();
         Hour currentHour = currentLesson.getHour();
 
+        // Get logged user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
         model.addAttribute("selectedLessonSubject", selectedLessonSubject);
         model.addAttribute("selectedLessonTeacher", selectedLessonTeacher);
         model.addAttribute("selectedLessonRoom", selectedLessonRoom);
@@ -90,6 +100,8 @@ public class LessonController {
 
         model.addAttribute("currentDay", currentDay);
         model.addAttribute("currentHour", currentHour);
+
+        model.addAttribute("log_user_mail", loggedUser.getName());
 
         return "plan";
     }
