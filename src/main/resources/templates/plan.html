@@ -34,7 +34,9 @@
         <div class="header__user">
             <div class="header__user__items">
                 <span class="header__user__items--logged">John Doe</span>
-                <span class="header__user__items--logout">Log out</span>
+                <a th:href="@{/logout}">
+                    <span class="header__user__items--logout">Log out</span>
+                </a>
             </div>
         </div>
     </div>
@@ -123,7 +125,7 @@
         <div class="workspace__plan">
             <div class="workspace__plan__inner">
                 <div class="plan__title" id="plan__title" onclick="showTitleEditor()">
-                    <span class="plan__title--heading">Plan title</span>
+                    <span class="plan__title--heading">Plan editor</span>
                     <span class="plan__title--text" th:text="${currentPlan.name}"></span>
                 </div>
                 <div class="plan__container">

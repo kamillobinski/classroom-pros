@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -14,16 +15,8 @@ public class RouteController {
     @Autowired
     private PlanService planService;
 
-    /*
-    Sign in is new default route due to security reason.
-     */
-    @RequestMapping("/")
-    public String getDefaultRoute() {
-        return "sign-in";
-    }
-
     // Sign in page
-    @RequestMapping("/sign-in")
+    @RequestMapping(value={"/", "/login", "sign-in"} , method = RequestMethod.GET)
     public String getSignIn() {
         return "sign-in";
     }

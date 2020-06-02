@@ -33,7 +33,9 @@
         <div class="header__user">
             <div class="header__user__items">
                 <span class="header__user__items--logged">John Doe</span>
-                <span class="header__user__items--logout">Log out</span>
+                <a th:href="@{/logout}">
+                    <span class="header__user__items--logout">Log out</span>
+                </a>
             </div>
         </div>
     </div>

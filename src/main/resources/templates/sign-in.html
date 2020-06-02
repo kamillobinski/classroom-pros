@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Sign in</title>
     <link rel="stylesheet" href="./css/login.css"/>
@@ -16,7 +17,7 @@
             <div class="form-container-inner">
                 <div class="form-container-title">Log in to your account</div>
                 <!-- Sign-in form -->
-                <form name="sign-in-action" action="sign-in-action" method="POST">
+                <form name="sign-in-action" th:action="@{/login}" method="POST">
                     <input type="text" placeholder="E-mail address" class="form-container-email"
                            name="sign-in-email-input">
                     <div class="form-container-line"></div>
