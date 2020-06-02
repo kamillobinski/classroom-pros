@@ -13,3 +13,7 @@ spring:
 ## If default port already in use
 server:
   port: 8081
+  ## Session timeout
+  servlet:
+    session:
+      timeout: 300s
