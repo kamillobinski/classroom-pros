@@ -53,7 +53,7 @@
                 <div class="plans__container">
                     <div class="plans__container__list">
                         <div class="plans__container__list--item" th:each="plan : ${allPlans}">
-                            <a th:href="@{'/plan-' + ${plan.id}}">
+                            <a th:href="@{'/plan-read-only-' + ${plan.id}}">
                                 <span th:text="${plan.name}"></span>
                             </a>
                         </div>
