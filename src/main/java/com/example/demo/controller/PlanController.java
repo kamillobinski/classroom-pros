@@ -105,6 +105,58 @@ public class PlanController {
         return "plan";
     }
 
+    @RequestMapping("/plan-read-only-{reqPlanId}")
+    public String getRequestedPlanReadOnly(Model model, @PathVariable int reqPlanId) {
+        // Data displayed in table
+        List<Hour> allHours = hourService.getHours();
+        List<Lesson> mondayLessons = lessonService.getLessonsForSpecificDayAndPlan("Monday", reqPlanId);
+        List<Lesson> tuesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Tuesday", reqPlanId);
+        List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", reqPlanId);
+        List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", reqPlanId);
+        List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", reqPlanId);
+
+        // Toolbar list
+        List<Plan> allPlans = planService.getAllPlans();
+
+        /* Name used to display on page
+         * Usage:
+         *  - renaming plan
+         *  - lesson editing */
+        Plan currentPlan = planService.getPlanById(reqPlanId);
+
+        // Used to fill lesson editor form
+        List<Subject> allSubjects = subjectRepository.findAll();
+        List<Teacher> allTeachers = teacherRepository.findAll();
+        List<Room> allRooms = roomRepository.findAll();
+
+        // Get logged user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
+        // Collect only admin role
+        HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
+        String log_user_role = "";
+        for(Role role : loggedUserRoles){
+            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        }
+
+        model.addAttribute("hourData", allHours);
+        model.addAttribute("mondayData", mondayLessons);
+        model.addAttribute("tuesdayData", tuesdayLessons);
+        model.addAttribute("wednesdayData", wednesdayLessons);
+        model.addAttribute("thursdayData", thursdayLessons);
+        model.addAttribute("fridayData", fridayLessons);
+        model.addAttribute("allPlans", allPlans);
+        model.addAttribute("currentPlan", currentPlan);
+        model.addAttribute("allSubjects", allSubjects);
+        model.addAttribute("allTeachers", allTeachers);
+        model.addAttribute("allRooms", allRooms);
+        model.addAttribute("log_user_mail", loggedUser.getName());
+        model.addAttribute("log_user_role", log_user_role);
+
+        return "plan-read-only";
+    }
+
     @RequestMapping("/rename-plan")
     public String renamePlan(@RequestParam("planId") int id, @RequestParam("planName") String name) {
         Plan existingPlan = planService.getPlanById(id);
