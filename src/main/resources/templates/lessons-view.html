@@ -41,7 +41,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="lesson : ${allLessons}">
+            <tr th:each="lesson : ${allLessons}"
+                th:if="${lesson.getTeacher().teacher_id!=1}">
                 <td th:text="${lesson.id}"></td>
                 <td th:text="${lesson.getSubject().getSubjectName()}"></td>
                 <td th:text="${lesson.getTeacher().getTeacher_id()}"></td>
