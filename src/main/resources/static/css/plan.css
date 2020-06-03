@@ -45,7 +45,7 @@ body {
 /* menu */
 .header__menu {
     width: 100%;
-    height: calc(100vh - 153px);
+    height: calc(100vh - 163px);
     display: table;
 }
 
@@ -87,6 +87,7 @@ body {
 .header__user__items {
     width: 140px;
     height: 25px;
+    margin-top: -10px;
     display: table-cell;
     vertical-align: middle;
 }
@@ -104,9 +105,21 @@ body {
     cursor: pointer;
 }
 
+.header__user__items div a {
+    text-decoration: none;
+    color: #424c55;
+}
+
 .header__user__items--logged {
     font-size: 14px;
     font-weight: 700;
+    font-family: "Muli", sans-serif;
+    color: #424c55;
+}
+
+.header__user__items--admin {
+    font-size: 13px;
+    font-weight: 400;
     font-family: "Muli", sans-serif;
     color: #424c55;
 }

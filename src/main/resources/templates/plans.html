@@ -33,9 +33,14 @@
         <div class="header__user">
             <div class="header__user__items">
                 <span class="header__user__items--logged" th:utext="${log_user_mail}"></span>
-                <a th:href="@{/logout}">
-                    <span class="header__user__items--logout">Log out</span>
-                </a>
+                <div th:switch="${log_user_role}">
+                    <a th:case="'ADMIN'" th:href="@{/admin-panel}">
+                        <span class="header__user__items--admin">Admin panel</span>
+                    </a>
+                    <a th:href="@{/logout}">
+                        <span class="header__user__items--logout">Log out</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

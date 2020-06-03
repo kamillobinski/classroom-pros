@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 import com.example.demo.entity.Plan;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.service.PlanService;
 import com.example.demo.service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -40,7 +42,15 @@ public class RouteController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User loggedUser = userService.getUserByEmail(auth.getName());
 
+        // Collect only admin role
+        HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
+        String log_user_role = "";
+        for(Role role : loggedUserRoles){
+            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        }
+
         model.addAttribute("log_user_mail", loggedUser.getName());
+        model.addAttribute("log_user_role", log_user_role);
         return "homepage";
     }
 
@@ -60,8 +70,17 @@ public class RouteController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User loggedUser = userService.getUserByEmail(auth.getName());
 
+        // Collect only admin role
+        HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
+        String log_user_role = "";
+        for(Role role : loggedUserRoles){
+            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        }
+
         model.addAttribute("allPlans", allPlans);
         model.addAttribute("log_user_mail", loggedUser.getName());
+
+        model.addAttribute("log_user_role", log_user_role);
         return "plans";
     }
 
