@@ -84,6 +84,30 @@ public class RouteController {
         return "plans";
     }
 
+    // All plans
+    @RequestMapping("/plans-read-only")
+    public String getPlansReadOnly(Model model) {
+        // get plans
+        List<Plan> allPlans = planService.getAllPlans();
+
+        // get logged user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
+        // Collect only admin role
+        HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
+        String log_user_role = "";
+        for(Role role : loggedUserRoles){
+            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        }
+
+        model.addAttribute("allPlans", allPlans);
+        model.addAttribute("log_user_mail", loggedUser.getName());
+
+        model.addAttribute("log_user_role", log_user_role);
+        return "plans-read-only";
+    }
+
     //Admin panel new version
     @RequestMapping("/admin-panel")
     public String getAdminPanel() {
