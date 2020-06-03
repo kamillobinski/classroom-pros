@@ -26,7 +26,10 @@
         <div class="header__menu">
             <div class="header__menu__items">
                 <span id="active">Homepage</span>
-                <span><a href="/plans-read-only">Plans</a></span>
+                <div th:switch="${log_user_role}">
+                    <span th:case="'ADMIN'"><a href="/plans">Plans</a></span>
+                    <span th:case="''"><a href="/plans-read-only">Plans</a></span>
+                </div>
                 <span>About</span>
                 <span>Contact</span>
             </div>
