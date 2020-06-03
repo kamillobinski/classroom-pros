@@ -119,4 +119,10 @@ public class RouteController {
     public String get403Page() {
         return "error/403";
     }
+
+    // 404 page
+    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    public String get404Page() {
+        return "error/404";
+    }
 }

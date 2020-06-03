@@ -14,13 +14,11 @@ body {
 }
 
 .wrapper {
-    display: flex;
-    justify-content: center;
     display: block;
 }
 
 .error__image {
-    width: 400px;
+    width: 350px;
     display: block;
 }
 
