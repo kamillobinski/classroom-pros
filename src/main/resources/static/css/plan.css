@@ -368,6 +368,29 @@ body {
     font-family: "Muli", sans-serif;
 }
 
+/* other options */
+
+.wrapper {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.other__options--link {
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+
+.other__options--name {
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+    border: 1px solid #cdcfd8;
+    border-radius: 4px;
+    padding: 2px 15px;
+    background-color: white;
+}
+
 /* toolbar accordion */
 
 .toolbar__accordions {

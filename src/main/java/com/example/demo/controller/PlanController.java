@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.repository.RoomRepository;
-import com.example.demo.repository.SubjectRepository;
-import com.example.demo.repository.TeacherRepository;
+import com.example.demo.repository.*;
 import com.example.demo.entity.*;
 import com.example.demo.service.HourService;
 import com.example.demo.service.LessonService;
@@ -13,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -41,6 +40,18 @@ public class PlanController {
 
     @Autowired
     private RoomRepository roomRepository;
+
+    @Autowired
+    private DayRepository dayRepository;
+
+    @Autowired
+    private GroupRepository groupRepository;
+
+    @Autowired
+    private HourRepository hourRepository;
+
+    @Autowired
+    private PlanRepository planRepository;
 
     @RequestMapping("/plan-{reqPlanId}")
     public String getRequestedPlan(Model model, @PathVariable int reqPlanId) {
@@ -104,6 +115,63 @@ public class PlanController {
         planService.deletePlanById(id);
 
         return "redirect:/plans";
+    }
+
+    // Generate new table
+    @RequestMapping("/generate-new-table-{plan_id}")
+    public String generateNewTable(@PathVariable int plan_id) {
+        int dayId = 1;
+        int hourId = 1;
+
+        for(int j = 0; j < 5; j++) {
+
+            switch(j) {
+                case 0: { dayId = 1; break; }
+                case 1: { dayId = 11; break; }
+                case 2: { dayId = 21; break; }
+                case 3: { dayId = 31; break; }
+                case 4: { dayId = 41; break; }
+            }
+
+            for (int i = 1; i <= 8; i++) {
+                switch(i) {
+                    case 1: { hourId = 1; break; }
+                    case 2: { hourId = 11; break; }
+                    case 3: { hourId = 21; break; }
+                    case 4: { hourId = 31; break; }
+                    case 5: { hourId = 41; break; }
+                    case 6: { hourId = 51; break; }
+                    case 7: { hourId = 61; break; }
+                }
+
+                Lesson newLesson = new Lesson();
+                newLesson.setHour(hourRepository.getOne(hourId));
+                newLesson.setRoom(roomRepository.getOne(1));
+                newLesson.setTeacher(teacherRepository.getOne(1));
+                newLesson.setGroup(groupRepository.getOne(1));
+                newLesson.setDay(dayRepository.getOne(dayId));
+                newLesson.setPlan(planRepository.getOne(plan_id));
+                newLesson.setSubject(subjectRepository.getOne(1));
+                lessonService.saveLesson(newLesson);
+            }
+        }
+
+        return "redirect:/plan-" + plan_id;
+
+    }
+
+    // Generate new plan
+    @RequestMapping("/generate-new-plan")
+    public String generateNewPlan() {
+        String defaultName = "New auto-generated plan";
+
+        Plan defaultNewPlan = new Plan();
+        defaultNewPlan.setName(defaultName);
+
+        Plan savedPlan = planService.savePlan(defaultNewPlan);
+        int savedPlanId = savedPlan.getId();
+
+        return "redirect:/generate-new-table-" + savedPlanId;
     }
 
 }
