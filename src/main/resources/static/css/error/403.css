@@ -1,0 +1,76 @@
+body {
+    background-color: white;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    display: block;
+}
+
+.error__image {
+    width: 400px;
+    display: block;
+}
+
+.error__message {
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.error__message--heading {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Muli", sans-serif;
+}
+
+.error__message--text {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+    max-width: 350px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        width: 200px;
+        padding: 20px;
+    }
+
+    .error__image {
+        width: 100%;
+        display: block;
+    }
+
+    .error__message--heading {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Muli", sans-serif;
+    }
+
+    .error__message--text {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 300;
+        font-family: "Muli", sans-serif;
+    }
+}

@@ -113,4 +113,10 @@ public class RouteController {
     public String getAdminPanel() {
         return "admin-panel";
     }
+
+    // 403 page
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String get403Page() {
+        return "error/403";
+    }
 }
