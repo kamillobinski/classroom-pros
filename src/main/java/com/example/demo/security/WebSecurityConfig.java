@@ -38,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/sign-up").permitAll()
                     .antMatchers("/sign-up-action").permitAll()
                     .antMatchers("/plan-read-only-*").permitAll()
+                    .antMatchers("/request-lesson-update-*").hasAuthority("ADMIN")
                     .antMatchers("/plan-*").hasAuthority("ADMIN")
                     .antMatchers("/plans").hasAuthority("ADMIN")
                     .antMatchers("/admin-panel").hasAuthority("ADMIN")
