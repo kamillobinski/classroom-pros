@@ -31,13 +31,24 @@
     </div>
 </div>
 <div class="layout">
-    //Add teacher
+        <label>Add teacher</label>
         <form name="add-teacher" action="/add-teacher-action" method="POST">
             <input type="text" placeholder="Teacher's title" name="add-teacher-title-input">
             <input type="text" placeholder="Teacher's name" name="add-teacher-firstname-input">
             <input type="text" placeholder="Teacher's lastname" name="add-teacher-lastname-input">
-            <button type="submit">Add new teacher</button>
-        </form>
+            <button type="submit">Add teacher</button>
+        </form> <br><br>
+        <label>Add subject</label>
+        <form name="add-subject" action="/add-subject-action" method="POST">
+            <input type="text" placeholder="Subject's name" name="add-subject-name-input">
+            <button type="submit">Add subject</button>
+        </form><br><br>
+        <label>Add room</label>
+        <form name="add-room" action="/add-room-action" method="POST">
+            <input type="text" placeholder="Room's number" name="add-room-number-input">
+            <button type="submit">Add room</button>
+        </form><br><br>
+
     <table border="1">
         <thead>
         <tr>
