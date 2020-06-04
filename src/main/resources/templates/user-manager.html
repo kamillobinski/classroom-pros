@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>User manager</title>
@@ -27,9 +29,14 @@
             <li><a href="/plans"><i class="far fa-calendar"></i>Plan editor</a> </li>
         </ul>
     </div>
-    <section></section>
 </div>
-<div>
+<div class="layout">
+    <label>Add user</label>
+    <form name="add-user" action="/add-user-action" method="POST">
+        <input type="text" placeholder="Users's email" name="add-user-email-input">
+        <input type="text" placeholder="Users's password" name="add-user-password-input">
+        <button type="submit">Add user</button>
+    </form> <br><br>
 
 </div>
 
