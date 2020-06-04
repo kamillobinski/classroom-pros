@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Lesson manager</title>
@@ -27,9 +29,35 @@
             <li><a href="/plans"><i class="far fa-calendar"></i>Plan editor</a> </li>
         </ul>
     </div>
-    <section></section>
 </div>
-<div>
+<div class="layout">
+    //Add teacher
+        <form name="add-teacher" action="/add-teacher-action" method="POST">
+            <input type="text" placeholder="Teacher's title" name="add-teacher-title-input">
+            <input type="text" placeholder="Teacher's name" name="add-teacher-firstname-input">
+            <input type="text" placeholder="Teacher's lastname" name="add-teacher-lastname-input">
+            <button type="submit">Add new teacher</button>
+        </form>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>first name</th>
+            <th>last name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacher : ${allTeachers}"
+            th:if="${teacher.teacher_id!=1}">
+            <td th:text="${teacher.teacher_id}"></td>
+            <td th:text="${teacher.title}"></td>
+            <td th:text="${teacher.first_name}"></td>
+            <td th:text="${teacher.last_name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 
 </div>
 

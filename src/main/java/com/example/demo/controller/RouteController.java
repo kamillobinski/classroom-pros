@@ -114,6 +114,12 @@ public class RouteController {
         return "admin-panel";
     }
 
+    @RequestMapping("/lesson-manager")
+    public String getLessonManager() {
+        return "lesson-manager";
+    }
+
+
     // 403 page
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String get403Page() {
