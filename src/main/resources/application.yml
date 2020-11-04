@@ -6,9 +6,11 @@ spring:
     hikari:
       minimumIdle: 1
       maximumPoolSize: 8
+    initialization-mode: always
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
+
 
 ## If default port already in use
 server:
