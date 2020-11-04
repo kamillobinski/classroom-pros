@@ -19,12 +19,6 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    /*
-    With Lombok constructors, getters and setters are obsolete
-    can be removed later after injecting Lombok annotations
-    (which wasn't done yet for clarity)
-     */
-
     public User() {
     }
 

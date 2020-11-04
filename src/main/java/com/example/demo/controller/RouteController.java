@@ -48,7 +48,6 @@ public class RouteController {
         for(Role role : loggedUserRoles){
             if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
         }
-
         model.addAttribute("log_user_mail", loggedUser.getName());
         model.addAttribute("log_user_role", log_user_role);
         return "homepage";
@@ -83,7 +82,6 @@ public class RouteController {
         model.addAttribute("log_user_role", log_user_role);
         return "plans";
     }
-
     // All plans
     @RequestMapping("/plans-read-only")
     public String getPlansReadOnly(Model model) {
@@ -103,11 +101,9 @@ public class RouteController {
 
         model.addAttribute("allPlans", allPlans);
         model.addAttribute("log_user_mail", loggedUser.getName());
-
         model.addAttribute("log_user_role", log_user_role);
         return "plans-read-only";
     }
-
     //Admin panel new version
     @RequestMapping("/admin-panel")
     public String getAdminPanel() {
@@ -119,7 +115,6 @@ public class RouteController {
         return "lesson-manager";
     }
 
-
     // 403 page
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String get403Page() {
@@ -130,5 +125,15 @@ public class RouteController {
     @RequestMapping(value = "/404", method = RequestMethod.GET)
     public String get404Page() {
         return "error/404";
+    }
+
+    @RequestMapping("/contact")
+    public String getContact() {
+        return "contact";
+    }
+
+    @RequestMapping("/about")
+    public String getAbout() {
+        return "about";
     }
 }

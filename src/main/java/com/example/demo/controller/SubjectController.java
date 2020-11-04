@@ -24,7 +24,6 @@ public class SubjectController {
             // Creates new subject based on the entered data in the form
             Subject newSubject = new Subject();
             newSubject.setSubjectName(subjectName);
-
             subjectService.addNewSubject(newSubject);
         }else {
             if(subjectName == "") {

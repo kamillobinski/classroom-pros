@@ -96,14 +96,12 @@ public class LessonService {
         existingHour.setEnd(hour.getEnd());
         hourRepository.save(existingHour);
 
-
         Group existingGroup = groupRepository.getOne(id);
         existingGroup.setGroupName(group.getGroupName());
         existingGroup.setGroupQuantity(group.getGroupQuantity());
         groupRepository.save(existingGroup);
 
         return lessonRepository.save(existingLesson);
-
     }
 
     public List<Lesson> getLessonsForSpecificDayOfTheWeek(String day){

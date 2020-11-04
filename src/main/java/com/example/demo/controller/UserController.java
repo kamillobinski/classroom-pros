@@ -25,7 +25,6 @@ public class UserController {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
     @GetMapping("/users-view")
     public  String findAllUsers(Model model){
         List <User> allUsers = userService.getUsers();
