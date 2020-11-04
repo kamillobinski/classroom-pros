@@ -128,12 +128,35 @@ public class RouteController {
     }
 
     @RequestMapping("/contact")
-    public String getContact() {
+    public String getContact(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
+        // Collect only admin role
+        HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
+        String log_user_role = "";
+        for(Role role : loggedUserRoles){
+            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        }
+        model.addAttribute("log_user_mail", loggedUser.getName());
+        model.addAttribute("log_user_role", log_user_role);
+
         return "contact";
     }
 
     @RequestMapping("/about")
-    public String getAbout() {
+    public String getAbout(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = userService.getUserByEmail(auth.getName());
+
+        // Collect only admin role
+        HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
+        String log_user_role = "";
+        for(Role role : loggedUserRoles){
+            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        }
+        model.addAttribute("log_user_mail", loggedUser.getName());
+        model.addAttribute("log_user_role", log_user_role);
         return "about";
     }
 }
