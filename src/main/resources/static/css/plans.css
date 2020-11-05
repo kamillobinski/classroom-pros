@@ -216,3 +216,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: lightgray;
 }
+
+.other__options--link {
+    margin-top: 15px;
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+
+.other__options--name {
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Muli", sans-serif;
+    border: 1px solid #cdcfd8;
+    border-radius: 4px;
+    padding: 2px 15px;
+    background-color: white;
+}

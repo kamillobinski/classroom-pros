@@ -263,7 +263,7 @@
                                 </a>
                             </td>
                             <!-- saturday lessons -->
-                            <td>
+                            <td id="saturday">
                                 <a th:href="@{'/request-lesson-update-' + ${saturdayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}">
                                     <div class="link-expander">
                                         <div class="plan__container__table--center">
@@ -284,7 +284,7 @@
                                 </a>
                             </td>
                             <!-- sunday lessons -->
-                            <td>
+                            <td id="sunday">
                                 <a th:href="@{'/request-lesson-update-' + ${sundayData[__${iter.index}__].id} + '-' + ${currentPlan.id}}">
                                     <div class="link-expander">
                                         <div class="plan__container__table--center">
