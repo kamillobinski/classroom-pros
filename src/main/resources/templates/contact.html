@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>All plans | Classroom pros</title>
-    <link rel="stylesheet" href="./css/plans.css"/>
+    <title>Contact | Classroom pros</title>
+    <link rel="stylesheet" href="./css/homepage.css"/>
     <link rel="shortcut icon" href="./utils/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Muli font -->
@@ -25,9 +26,12 @@
         <div class="header__menu">
             <div class="header__menu__items">
                 <span><a href="/homepage">Homepage</a></span>
-                <span id="active">Plans</span>
+                <div th:switch="${log_user_role}">
+                    <span th:case="'ADMIN'"><a href="/plans">Plans</a></span>
+                    <span th:case="''"><a href="/plans-read-only">Plans</a></span>
+                </div>
                 <span><a href="/about">About</a></span>
-                <span><a href="/contact">Contact</a></span>
+                <span id="active">Contact</span></span>
             </div>
         </div>
         <div class="header__user">
@@ -48,23 +52,10 @@
         <div class="workspace__plans">
             <div class="workspace__plans__inner">
                 <div class="plans__title">
-                    <span class="plans__title--heading">Available plans</span>
-                </div>
-                <a th:href="@{/generate-new-plan}" class="other__options--link">
-                    <span class="other__options--name">Generate new plan</span>
-                </a>
-                <div class="plans__container">
-                    <div class="plans__container__list">
-                        <div class="plans__container__list--item" th:each="plan : ${allPlans}">
-                            <a th:href="@{'/plan-' + ${plan.id}}">
-                                <span th:text="${plan.name}"></span>
-                            </a>
-                        </div>
-                    </div>
+                    <span class="plans__title--heading">Contact us here</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-</html>

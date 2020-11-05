@@ -6,14 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
 
-/*
-W Springu architektura ma trzy warstwy:
-- data access,
-- service layer,
-- API/Controller layer
-
-Zaczyna się od data access
- */
 @SpringBootApplication
 public class DemoApplication {
 

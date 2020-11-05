@@ -138,7 +138,6 @@ public class TestHomeController {
                     case 6: { hourId = 51; break; }
                     case 7: { hourId = 61; break; }
                 }
-
                 Lesson newLesson = new Lesson();
                 newLesson.setHour(hourRepository.getOne(hourId));
                 newLesson.setRoom(roomRepository.getOne(1));
@@ -150,7 +149,6 @@ public class TestHomeController {
                 lessonService.saveLesson(newLesson);
             }
         }
-
         return "redirect:/test-home-" + plan_id;
 
     }
