@@ -82,6 +82,8 @@
                             <th>Wednesday</th>
                             <th>Thursday</th>
                             <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
                         </tr>
                         <tr th:each="hour, iter : ${hourData}">
                             <td th:text="${hour.start + ' - ' + hour.end}" class="plan__container__table__hour"></td>
@@ -167,22 +169,62 @@
                             </td>
                             <!-- friday lessons -->
                             <td>
-                                    <div class="link-expander">
-                                        <div class="plan__container__table--center">
-                                            <p th:text="${fridayData[__${iter.index}__].subject.subjectName}"
-                                               class="plan__container__table__subject"></p>
-                                            <p class="plan__container__table__teacher">
+                                <div class="link-expander">
+                                    <div class="plan__container__table--center">
+                                        <p th:text="${fridayData[__${iter.index}__].subject.subjectName}"
+                                           class="plan__container__table__subject"></p>
+                                        <p class="plan__container__table__teacher">
                                                     <span th:text="${fridayData[__${iter.index}__].teacher.title}"
                                                           class="plan__container__table__teacher--title"></span>
-                                                <span th:text="${fridayData[__${iter.index}__].teacher.first_name}"
-                                                      class="plan__container__table__teacher--firstname"></span>
-                                                <span th:text="${fridayData[__${iter.index}__].teacher.last_name}"
-                                                      class="plan__container__table__teacher--lastname"></span>
-                                            </p>
-                                            <p th:text="${fridayData[__${iter.index}__].room.number}"
-                                               class="plan__container__table__room"></p>
-                                        </div>
+                                            <span th:text="${fridayData[__${iter.index}__].teacher.first_name}"
+                                                  class="plan__container__table__teacher--firstname"></span>
+                                            <span th:text="${fridayData[__${iter.index}__].teacher.last_name}"
+                                                  class="plan__container__table__teacher--lastname"></span>
+                                        </p>
+                                        <p th:text="${fridayData[__${iter.index}__].room.number}"
+                                           class="plan__container__table__room"></p>
                                     </div>
+                                </div>
+                                </a>
+                            </td>
+                            <!-- saturday lessons -->
+                            <td id="saturday">
+                                <div class="link-expander">
+                                    <div class="plan__container__table--center">
+                                        <p th:text="${saturdayData[__${iter.index}__].subject.subjectName}"
+                                           class="plan__container__table__subject"></p>
+                                        <p class="plan__container__table__teacher">
+                                                    <span th:text="${saturdayData[__${iter.index}__].teacher.title}"
+                                                          class="plan__container__table__teacher--title"></span>
+                                            <span th:text="${saturdayData[__${iter.index}__].teacher.first_name}"
+                                                  class="plan__container__table__teacher--firstname"></span>
+                                            <span th:text="${saturdayData[__${iter.index}__].teacher.last_name}"
+                                                  class="plan__container__table__teacher--lastname"></span>
+                                        </p>
+                                        <p th:text="${saturdayData[__${iter.index}__].room.number}"
+                                           class="plan__container__table__room"></p>
+                                    </div>
+                                </div>
+                                </a>
+                            </td>
+                            <!-- sunday lessons -->
+                            <td id="sunday">
+                                <div class="link-expander">
+                                    <div class="plan__container__table--center">
+                                        <p th:text="${sundayData[__${iter.index}__].subject.subjectName}"
+                                           class="plan__container__table__subject"></p>
+                                        <p class="plan__container__table__teacher">
+                                                    <span th:text="${sundayData[__${iter.index}__].teacher.title}"
+                                                          class="plan__container__table__teacher--title"></span>
+                                            <span th:text="${sundayData[__${iter.index}__].teacher.first_name}"
+                                                  class="plan__container__table__teacher--firstname"></span>
+                                            <span th:text="${sundayData[__${iter.index}__].teacher.last_name}"
+                                                  class="plan__container__table__teacher--lastname"></span>
+                                        </p>
+                                        <p th:text="${sundayData[__${iter.index}__].room.number}"
+                                           class="plan__container__table__room"></p>
+                                    </div>
+                                </div>
                                 </a>
                             </td>
                         </tr>
