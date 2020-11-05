@@ -50,6 +50,9 @@
                 <div class="plans__title">
                     <span class="plans__title--heading">Available plans</span>
                 </div>
+                <a th:href="@{/generate-new-plan}" class="other__options--link">
+                    <span class="other__options--name">Generate new plan</span>
+                </a>
                 <div class="plans__container">
                     <div class="plans__container__list">
                         <div class="plans__container__list--item" th:each="plan : ${allPlans}">
