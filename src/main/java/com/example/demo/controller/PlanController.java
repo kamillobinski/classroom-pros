@@ -62,6 +62,8 @@ public class PlanController {
         List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", reqPlanId);
         List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", reqPlanId);
         List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", reqPlanId);
+        List<Lesson> saturdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Saturday", reqPlanId);
+        List<Lesson> sundayLessons = lessonService.getLessonsForSpecificDayAndPlan("Sunday", reqPlanId);
 
         // Toolbar list
         List<Plan> allPlans = planService.getAllPlans();
@@ -94,6 +96,8 @@ public class PlanController {
         model.addAttribute("wednesdayData", wednesdayLessons);
         model.addAttribute("thursdayData", thursdayLessons);
         model.addAttribute("fridayData", fridayLessons);
+        model.addAttribute("saturdayData", saturdayLessons);
+        model.addAttribute("sundayData", sundayLessons);
         model.addAttribute("allPlans", allPlans);
         model.addAttribute("currentPlan", currentPlan);
         model.addAttribute("allSubjects", allSubjects);
@@ -114,6 +118,8 @@ public class PlanController {
         List<Lesson> wednesdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Wednesday", reqPlanId);
         List<Lesson> thursdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Thursday", reqPlanId);
         List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", reqPlanId);
+        List<Lesson> saturdayLessons = lessonService.getLessonsForSpecificDayAndPlan("Saturday", reqPlanId);
+        List<Lesson> sundayLessons = lessonService.getLessonsForSpecificDayAndPlan("Sunday", reqPlanId);
 
         // Toolbar list
         List<Plan> allPlans = planService.getAllPlans();
@@ -146,6 +152,8 @@ public class PlanController {
         model.addAttribute("wednesdayData", wednesdayLessons);
         model.addAttribute("thursdayData", thursdayLessons);
         model.addAttribute("fridayData", fridayLessons);
+        model.addAttribute("saturdayData", saturdayLessons);
+        model.addAttribute("sundayData", sundayLessons);
         model.addAttribute("allPlans", allPlans);
         model.addAttribute("currentPlan", currentPlan);
         model.addAttribute("allSubjects", allSubjects);
@@ -183,7 +191,7 @@ public class PlanController {
         int dayId = 1;
         int hourId = 1;
 
-        for(int j = 0; j < 5; j++) {
+        for(int j = 0; j < 7; j++) {
 
             switch(j) {
                 case 0: { dayId = 1; break; }
@@ -191,6 +199,8 @@ public class PlanController {
                 case 2: { dayId = 21; break; }
                 case 3: { dayId = 31; break; }
                 case 4: { dayId = 41; break; }
+                case 5: { dayId = 51; break; }
+                case 6: { dayId = 61; break; }
             }
 
             for (int i = 1; i <= 8; i++) {
