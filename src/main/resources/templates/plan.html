@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
     <title th:text="${currentPlan.name} + ' | Classroom pros'"></title>
     <link rel="stylesheet" href="./css/plan.css"/>
@@ -306,9 +308,12 @@
                             </td>
                         </tr>
                     </table>
+                    <img src="./utils/pdf_icon.png" height="35" width="35"/>
+                    <a th:href="@{|/download-pdf|}"> <span>Download PDF Document</span></a>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </body>

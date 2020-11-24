@@ -2,10 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.repository.*;
 import com.example.demo.entity.*;
-import com.example.demo.service.HourService;
-import com.example.demo.service.LessonService;
-import com.example.demo.service.PlanService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.*;
+import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,7 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 
@@ -53,6 +56,9 @@ public class PlanController {
     @Autowired
     private PlanRepository planRepository;
 
+    @Autowired
+    PdfService pdfService;
+
     @RequestMapping("/plan-{reqPlanId}")
     public String getRequestedPlan(Model model, @PathVariable int reqPlanId) {
         // Data displayed in table
@@ -86,8 +92,8 @@ public class PlanController {
         // Collect only admin role
         HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
         String log_user_role = "";
-        for(Role role : loggedUserRoles){
-            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        for (Role role : loggedUserRoles) {
+            if (role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
         }
 
         model.addAttribute("hourData", allHours);
@@ -142,8 +148,8 @@ public class PlanController {
         // Collect only admin role
         HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
         String log_user_role = "";
-        for(Role role : loggedUserRoles){
-            if(role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+        for (Role role : loggedUserRoles) {
+            if (role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
         }
 
         model.addAttribute("hourData", allHours);
@@ -191,27 +197,69 @@ public class PlanController {
         int dayId = 1;
         int hourId = 1;
 
-        for(int j = 0; j < 7; j++) {
+        for (int j = 0; j < 7; j++) {
 
-            switch(j) {
-                case 0: { dayId = 1; break; }
-                case 1: { dayId = 11; break; }
-                case 2: { dayId = 21; break; }
-                case 3: { dayId = 31; break; }
-                case 4: { dayId = 41; break; }
-                case 5: { dayId = 51; break; }
-                case 6: { dayId = 61; break; }
+            switch (j) {
+                case 0: {
+                    dayId = 1;
+                    break;
+                }
+                case 1: {
+                    dayId = 11;
+                    break;
+                }
+                case 2: {
+                    dayId = 21;
+                    break;
+                }
+                case 3: {
+                    dayId = 31;
+                    break;
+                }
+                case 4: {
+                    dayId = 41;
+                    break;
+                }
+                case 5: {
+                    dayId = 51;
+                    break;
+                }
+                case 6: {
+                    dayId = 61;
+                    break;
+                }
             }
 
             for (int i = 1; i <= 8; i++) {
-                switch(i) {
-                    case 1: { hourId = 1; break; }
-                    case 2: { hourId = 11; break; }
-                    case 3: { hourId = 21; break; }
-                    case 4: { hourId = 31; break; }
-                    case 5: { hourId = 41; break; }
-                    case 6: { hourId = 51; break; }
-                    case 7: { hourId = 61; break; }
+                switch (i) {
+                    case 1: {
+                        hourId = 1;
+                        break;
+                    }
+                    case 2: {
+                        hourId = 11;
+                        break;
+                    }
+                    case 3: {
+                        hourId = 21;
+                        break;
+                    }
+                    case 4: {
+                        hourId = 31;
+                        break;
+                    }
+                    case 5: {
+                        hourId = 41;
+                        break;
+                    }
+                    case 6: {
+                        hourId = 51;
+                        break;
+                    }
+                    case 7: {
+                        hourId = 61;
+                        break;
+                    }
                 }
 
                 Lesson newLesson = new Lesson();
@@ -244,4 +292,20 @@ public class PlanController {
         return "redirect:/generate-new-table-" + savedPlanId;
     }
 
+    @GetMapping("/download-pdf")
+    public void downloadPDFResource(HttpServletResponse response) {
+        try {
+            Path file = Paths.get(pdfService.generatePdf().getAbsolutePath());
+            if (Files.exists(file)) {
+                response.setContentType("application/pdf");
+                response.addHeader("Content-Disposition",
+                        "attachment; filename=" + file.getFileName());
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            }
+        } catch (DocumentException | IOException ex) {
+            ex.printStackTrace();
+        }
+
+    }
 }
