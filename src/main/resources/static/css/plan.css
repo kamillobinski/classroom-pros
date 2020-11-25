@@ -392,6 +392,9 @@ body {
     text-decoration: none;
     display: block;
     color: black;
+    width: fit-content;
+    margin-top: 15px;
+    position: relative;
 }
 
 .other__options--name {
@@ -402,6 +405,10 @@ body {
     border-radius: 4px;
     padding: 2px 15px;
     background-color: white;
+}
+
+.other__options--name img {
+    margin-bottom: -2px;
 }
 
 /* toolbar accordion */

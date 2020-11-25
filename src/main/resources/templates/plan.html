@@ -12,7 +12,12 @@
             href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600;700;900&display=swap"
             rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
     <script type="text/javascript" src="./js/toolbar.js"></script>
+    <script type="text/javascript" src="./js/pdf.js"></script>
 </head>
 <body style="margin: 0px !important;" onload="showLessonEditor()">
 <div class="container">
@@ -117,6 +122,12 @@
                             <a th:href="@{/generate-new-plan}" class="other__options--link">
                                 <span class="other__options--name">Generate new plan</span>
                             </a>
+                            <a href="#" class="other__options--link" onclick="generatePDF()">
+                                <span class="other__options--name">
+                                    <img src="./utils/pdf_icon.png" height="16" width="16"/>
+                                    Export to PDF
+                                </span>
+                            </a>
                         </div>
                     </div>
                     <!-- all plans -->
@@ -142,10 +153,10 @@
             <div class="workspace__plan__inner">
                 <div class="plan__title" id="plan__title" onclick="showTitleEditor()">
                     <span class="plan__title--heading">Plan editor</span>
-                    <span class="plan__title--text" th:text="${currentPlan.name}"></span>
+                    <span class="plan__title--text" th:text="${currentPlan.name}" id="plan-name"></span>
                 </div>
                 <div class="plan__container">
-                    <table class="plan__container__table">
+                    <table class="plan__container__table" id="pdf-content">
                         <tr>
                             <th>Hours</th>
                             <th>Monday</th>
@@ -308,8 +319,6 @@
                             </td>
                         </tr>
                     </table>
-                    <img src="./utils/pdf_icon.png" height="35" width="35"/>
-                    <a th:href="@{|/download-pdf|}"> <span>Download PDF Document</span></a>
                 </div>
             </div>
         </div>
