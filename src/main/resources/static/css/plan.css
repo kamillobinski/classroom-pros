@@ -386,6 +386,7 @@ body {
 .wrapper {
     margin-top: 15px;
     margin-bottom: 15px;
+    background-color: transparent !important;
 }
 
 .other__options--link {
@@ -404,7 +405,6 @@ body {
     border: 1px solid #cdcfd8;
     border-radius: 4px;
     padding: 2px 15px;
-    background-color: white;
 }
 
 .other__options--name img {
