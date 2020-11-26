@@ -143,13 +143,18 @@ public class PlanController {
 
         // Get logged user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User loggedUser = userService.getUserByEmail(auth.getName());
+        if(auth.getName() != "anonymousUser") {
+            User loggedUser = userService.getUserByEmail(auth.getName());
 
-        // Collect only admin role
-        HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
-        String log_user_role = "";
-        for (Role role : loggedUserRoles) {
-            if (role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+            // Collect only admin role
+            HashSet<Role> loggedUserRoles = new HashSet<>(loggedUser.getRoles());
+            String log_user_role = "";
+            for (Role role : loggedUserRoles) {
+                if (role.getRole().equals("ADMIN")) log_user_role = String.valueOf(role.getRole());
+            }
+
+            model.addAttribute("log_user_mail", loggedUser.getName());
+            model.addAttribute("log_user_role", log_user_role);
         }
 
         model.addAttribute("hourData", allHours);
@@ -165,8 +170,6 @@ public class PlanController {
         model.addAttribute("allSubjects", allSubjects);
         model.addAttribute("allTeachers", allTeachers);
         model.addAttribute("allRooms", allRooms);
-        model.addAttribute("log_user_mail", loggedUser.getName());
-        model.addAttribute("log_user_role", log_user_role);
 
         return "plan-read-only";
     }
