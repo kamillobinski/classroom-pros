@@ -13,7 +13,7 @@
 <div class="grid-item form">
     <div class="form-container">
         <div class="form-container-inner">
-            <div class="form-container-title">Sign up</div>
+            <div class="form-container-title">Create new admin account</div>
             <!-- Sign-up form -->
             <form name="sign-up-action" action="sign-up-action" method="POST">
                 <input type="text" placeholder="E-mail address" class="form-container-email" name="sign-up-email-input">
@@ -23,8 +23,8 @@
                 <p class="warning-message" th:text="${message}"></p>
                 <div class="form-container-buttons">
                     <button class="form-container-login-button" type="submit">Sign up</button>
-                    <a href="/sign-in">
-                        <button class="form-container-signup-button" type="button">Log in</button>
+                    <a href="/homepage">
+                        <button class="form-container-signup-button" type="button">Back to homepage</button>
                     </a>
                 </div>
             </form>

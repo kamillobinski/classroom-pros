@@ -44,7 +44,7 @@ public class SignUpController {
             newUser.setEmail(email);
             newUser.setPassword(bCryptPasswordEncoder.encode(password));
             // Get role 'USER' and apply to new account
-            Role userRole = roleRepository.findByRole("USER");
+            Role userRole = roleRepository.findByRole("ADMIN");
             newUser.setRoles(new HashSet<>(List.of(userRole)));
 
             // Check if user already exists in database
