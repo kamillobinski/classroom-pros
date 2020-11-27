@@ -38,7 +38,7 @@
                     <a th:case="'ADMIN'" th:href="@{/admin-panel}">
                         <span class="header__user__items--admin">Admin panel</span>
                     </a>
-                    <a th:href="@{/logout}">
+                    <a th:case="'ADMIN'" th:href="@{/logout}">
                         <span class="header__user__items--logout">Log out</span>
                     </a>
                 </div>
