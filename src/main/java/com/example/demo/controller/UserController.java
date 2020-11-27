@@ -48,13 +48,17 @@ public class UserController {
             String hashedPassword;
             newUser.setPassword(bCryptPasswordEncoder.encode(password));
 
-            Role userRole = roleRepository.findByRole("USER");
+            /*
+             *  Changed to admin role
+             *  due to abandoned login and registration for regular user
+             */
+            Role userRole = roleRepository.findByRole("ADMIN");
             newUser.setRoles(new HashSet<>(List.of(userRole)));
 
             userService.saveUser(newUser);
         }else{
             if(email== "" || password == ""){
-                model.addAttribute("message", "Could not add user without data");
+                model.addAttribute("message", "Could not add admin without data");
             }
         }
         return "admin-panel";
