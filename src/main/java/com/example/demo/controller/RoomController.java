@@ -5,9 +5,7 @@ import com.example.demo.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class RoomController {
@@ -31,6 +29,14 @@ public class RoomController {
                 model.addAttribute("message", "Could not add room without data.");
             }
         }
-        return "admin-panel";
+        return "redirect:/lesson-manager";
     }
+
+    @GetMapping("/deleteRoom/{id}")
+    public String deleteRoom(@PathVariable(value = "id") int id){
+        roomService.deleteRoom(id);
+        return "lesson-manager";
+
+    }
+
 }

@@ -61,6 +61,6 @@ public class UserController {
                 model.addAttribute("message", "Could not add admin without data");
             }
         }
-        return "admin-panel";
+        return "user-manager";
     }
 }

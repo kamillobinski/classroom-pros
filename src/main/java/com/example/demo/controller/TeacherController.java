@@ -1,6 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Room;
+import com.example.demo.entity.Subject;
 import com.example.demo.entity.Teacher;
+import com.example.demo.service.RoomService;
+import com.example.demo.service.SubjectService;
 import com.example.demo.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,12 @@ public class TeacherController {
 
     @Autowired
     private TeacherService teacherService;
+
+    @Autowired
+    private SubjectService subjectService;
+
+    @Autowired
+    private RoomService roomService;
 
     @RequestMapping(value = "/add-teacher-action", method = RequestMethod.POST)
     public String addNewTeacher(Model model, @RequestParam("add-teacher-firstname-input") String firstName, @RequestParam("add-teacher-lastname-input") String lastName, @RequestParam("add-teacher-title-input") String title) {
@@ -36,7 +46,7 @@ public class TeacherController {
                 model.addAttribute("message", "Could not add teacher without data.");
             }
         }
-        return "admin-panel";
+        return "redirect:/lesson-manager";
     }
 
     @GetMapping("/lesson-manager")
@@ -44,6 +54,12 @@ public class TeacherController {
         List<Teacher> allTeachers = teacherService.getTeachers();
         model.addAttribute("allTeachers", allTeachers);
 
-        return "lesson-manager";
+        List<Subject> allSubjects = subjectService.getSubjects();
+        model.addAttribute("allSubjects", allSubjects);
+
+        List<Room> allRooms = roomService.getRooms();
+        model.addAttribute("allRooms",allRooms);
+
+        return "/lesson-manager";
     }
 }

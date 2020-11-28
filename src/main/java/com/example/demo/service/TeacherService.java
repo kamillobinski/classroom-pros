@@ -20,4 +20,8 @@ public class TeacherService {
     public List<Teacher> getTeachers(){
         return teacherRepository.findAll();
     }
+
+    public void deleteTeacher(int id){
+        teacherRepository.deleteById(id);
+    }
 }
