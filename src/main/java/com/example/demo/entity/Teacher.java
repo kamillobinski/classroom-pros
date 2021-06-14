@@ -12,6 +12,16 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "lessons"})
 public class Teacher {
 
+    public Teacher() {
+
+    }
+
+    public Teacher(String fn, String ln, String t) {
+        first_name = fn;
+        last_name = ln;
+        title = t;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "teacher_id", unique = true, nullable = false)
