@@ -21,7 +21,7 @@ public class UserRestController {
 
     @PostMapping("/addUser")
     public User addUser (@RequestBody User user){
-        return userService.saveUser(user);
+        return userService.saveUserWithReqBody(user);
     }
 
     @PostMapping("/addUsers")

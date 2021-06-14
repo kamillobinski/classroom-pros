@@ -1,10 +1,15 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Role;
+import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -13,8 +18,39 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
     //save ONE user
-    public User saveUser(User user){
+    public Model saveUser(Model model, String email, String password){
+        if(!email.equals("") && !password.equals("")){
+
+            User newUser = new User();
+            newUser.setEmail(email);
+
+            String hashedPassword;
+            newUser.setPassword(bCryptPasswordEncoder.encode(password));
+
+            /*
+             *  Changed to admin role
+             *  due to abandoned login and registration for regular user
+             */
+            Role userRole = roleRepository.findByRole("ADMIN");
+            newUser.setRoles(new HashSet<>(List.of(userRole)));
+
+            userRepository.save(newUser);
+        }else{
+            if(email.equals("") || password.equals("")){
+                model.addAttribute("message", "Could not add admin without data");
+            }
+        }
+        return model;
+    }
+
+    public User saveUserWithReqBody(User user) {
         return userRepository.save(user);
     }
 
@@ -29,7 +65,7 @@ public class UserService {
     }
 
     //return all existing users
-    public List <User>  getUsers(){
+    public List<User> getUsers(){
         return userRepository.findAll();
     }
 

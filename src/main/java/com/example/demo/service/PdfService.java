@@ -28,7 +28,7 @@ public class PdfService {
     PlanController planController;
 
     private static final String PDF_RESOURCES = "/pdf-resources/";
-    private SpringTemplateEngine templateEngine;
+    private final SpringTemplateEngine templateEngine;
 
     @Autowired
     public PdfService(LessonService lessonService, SpringTemplateEngine templateEngine, PlanController planController){

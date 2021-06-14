@@ -63,7 +63,7 @@ public class TestHomeController {
         List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", planId);
 
         List<Plan> allPlans = planService.getAllPlans();
-        Plan currentPlan = planService.getPlanById(planId);
+        Plan currentPlan = planRepository.findById(planId);
         List<Hour> allHours = hourService.getHours();
 
         // Used in the lesson edit form
@@ -178,7 +178,7 @@ public class TestHomeController {
         List<Lesson> fridayLessons = lessonService.getLessonsForSpecificDayAndPlan("Friday", requestedPlanId);
 
         List<Plan> allPlans = planService.getAllPlans();
-        Plan currentPlan = planService.getPlanById(requestedPlanId);
+        Plan currentPlan = planRepository.findById(requestedPlanId);
         List<Hour> allHours = hourService.getHours();
 
         // Used in the lesson edit form
@@ -216,7 +216,7 @@ public class TestHomeController {
     // Change plan name
     @RequestMapping("/test-change-current-plan-name")
     public String changePlanName(Model model, @RequestParam("current-plan-id") int id, @RequestParam("changed-plan-name") String name) {
-        Plan existingPlan = planService.getPlanById(id);
+        Plan existingPlan = planRepository.findById(id);
         existingPlan.setName(name);
 
         planService.savePlan(existingPlan);
