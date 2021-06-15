@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PlanRepository extends JpaRepository<Plan, Integer> {
     void deletePlanById(int id);
     Plan findById(int id);
+    Plan findByName(String name);
+    boolean existsByName(String name);
 }
