@@ -1,51 +1,119 @@
-# Classroom pros
+<a name="readme-top"></a>
 
-Main purpose of this project is to let you create, edit and manage lesson plans that are easily accessible by others.
 
-![cp_preview](https://github.com/kamillobinski/classroom-pros/blob/master/cp_preview.png?raw=true)
 
-## Installation
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <img src="assets/logo.png" alt="Logo" width="80" height="80">
+  <h3 align="center">Classrom-Pros</h3>
+  <p align="center">
+    A web-based tool for creating and managing
+    <br>lesson plans with export functionality, built using 
+    <br>Spring Boot, JPA, Thymeleaf, and MySQL.
+    <br /><br />
+  </p>
+</div>
 
-It is possible to import project as a maven application to your favorite IDE.
 
-```bash
-# Clone this repository
-$ git clone https://github.com/kamillobinski/classroom-pros
-```
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+This repository contains a web-based tool for creating, editing, and managing lesson plans that can be easily shared with others. The tool allows teachers to create plans using dynamic tables, and then export them as PDFs. Students can view their plans, but only teachers have permission to edit them using their accounts.
+
+This project was created during computer engineering studies as a task for learning purposes. It uses a variety of technologies, including Spring Boot, Spring Data JPA, Thymeleaf, and MySQL.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
+![Java][Java-url]
+![Spring][Spring-url]
+![Thymeleaf][Thymeleaf-url]
+![MySQL][MySQL-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone git@github.com:kamillobinski/classroom-pros.git
+   ```
+
+2. Update database variables in the application.yml
+   ```yaml
+    url: jdbc:mysql://HOST:PORT/DB
+    username: DB_USERNAME
+    password: DB_PASSWORD
+   ```
+
+3. Run the command to start the Spring Boot application (make sure you have Java and Maven installed on your system)
+   ```sh
+   mvn spring-boot:run
+   ```
+
+4. Once the application is running, open your web browser and navigate to `http://localhost:8081` to access the application.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- USAGE -->
 ## Usage
 
-Quick info on how to run a Spring Boot application.
+![cp_preview](./cp_preview.png)
 
-1. Build using maven goal (or by using maven wrapper): ```mvn clean package``` and execute the resulting artifact ```java - jar demo-0.0.1-SNAPSHOT.jar```
-2. On Unix/Linux based systems: ```mvn clean package``` then run the resulting jar as any other executable ```./demo-0.0.1-SNAPSHOT.jar```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Access the deployed web application at: http://localhost:8081/
 
-**Note**: this projects by default uses ClearDB MySQL on [Heroku](https://heroku.com) platform. You can change it in the ```application.yml``` file.
 
-```yaml
-spring:
-  datasource:
-    url: jdbc:mysql://{hoster_domain}:{port}/{database}
-    username: {database username}
-    password: {database password}
-    hikari:
-      minimumIdle: 1
-      maximumPoolSize: 8
-  jpa:
-    hibernate:
-      ddl-auto: update
+<!-- LICENSE -->
+## License
 
-server:
-  port: 8081
-```
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## Key Features
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Will be described soon.
 
+
+<!-- CONTACT -->
 ## Contributors
-
 
 <div>
     <a href="https://github.com/kamillobinski/classroom-pros/graphs/contributors">
@@ -53,7 +121,12 @@ Will be described soon.
     </a>
 </div>
 
-## License
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Distributed under the MIT License. See ```LICENSE``` for more information.
 
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[Java-url]: https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white
+[Spring-url]: https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white
+[Thymeleaf-url]: https://img.shields.io/badge/Thymeleaf-%23005C0F.svg?style=for-the-badge&logo=Thymeleaf&logoColor=white
+[MySQL-url]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
